@@ -21,12 +21,12 @@ func greet(name) {
 let names = ["Kenneth", "Logan", "Sam", "Mike"]
 
 for name in names {
-  print(greet(name))
+  window.alert(name)
 }
 """;
 
 const String HELLO = r"""
-print("Hello World")
+window.alert("Hello World")
 """;
 
 String formatJSON(String input) {
