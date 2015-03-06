@@ -2414,7 +2414,9 @@ zs:function(a){},
 kF:function(a){var z,y,x,w,v,u
 z=a.Q
 y=J.t(z)
-if(!!y.$isYE&&J.mG(y.gM(z),!1))return
+if(!(!!y.$isYE&&J.mG(y.gM(z),!1))){y=a.a
+y=y==null||J.FN(y.gQh())}else y=!0
+if(y)return
 y=this.Q
 x=y.Q+="if ("
 y.Q=x+"\u03bbbool("
@@ -2445,7 +2447,9 @@ if(J.pB(x.gQh(),a)!==J.wS(x.gQh())-1)y.Q+=";"}y.Q+="}"}},
 Jf:function(a){var z,y,x,w,v,u
 z=a.Q
 y=J.t(z)
-if(!!y.$isYE&&J.mG(y.gM(z),!1))return
+if(!(!!y.$isYE&&J.mG(y.gM(z),!1))){y=a.a
+y=y==null||J.FN(y.gQh())}else y=!0
+if(y)return
 y=this.Q
 x=y.Q+="while ("
 y.Q=x+"\u03bbbool("
@@ -2563,12 +2567,17 @@ z=this.Q
 z.Q+="["
 this.xn(a.a)
 z.Q+="]"},
-RD:function(a){var z=this.Q
-z.Q+="\u03bbbool("
-this.xn(a.Q)
-z.Q+=") ? "
+RD:function(a){var z,y
+z=a.Q
+y=J.t(z)
+if(!!y.$isYE){if(y.gM(z)===!0)this.xn(a.a)
+else this.xn(a.b)
+return}y=this.Q
+y.Q+="\u03bbbool("
+this.xn(z)
+y.Q+=") ? "
 this.xn(a.a)
-z.Q+=" : "
+y.Q+=" : "
 this.xn(a.b)},
 r7:function(a){var z,y,x,w,v
 z=this.Q
