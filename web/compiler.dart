@@ -13,6 +13,14 @@ ace.Editor outputEditor;
 String type = "js";
 String example;
 
+const String FIBONACCI = r"""
+func fib(n) {
+  return ((n == 0) || (n == 1)) ? n : fib(n - 1) + fib(n - 2)
+}
+
+window.alert(fib(10))
+""";
+
 const String GREETING = r"""
 func greet(name) {
   return "Hello $(name)"
@@ -66,6 +74,8 @@ void main() {
       s = HELLO;
     } else if (e == "greeting") {
       s = GREETING;
+    } else if (e == "fib") {
+      s = FIBONACCI;
     } else {
       window.alert("Unknown Example: ${e}");
       return;
