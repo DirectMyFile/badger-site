@@ -80,39 +80,54 @@ void main() {
 }
 
 recompile() async {
-  try {
-    var parser = new BadgerParser();
-    var result = parser.parse(inputEditor.session.value);
-    var compiler;
+  var parser = new BadgerParser();
+  var result = parser.parse(inputEditor.session.value);
 
-    if (type == "js") {
-      compiler = new JsCompilerTarget();
-    } else if (type == "dart") {
-      compiler = new DartCompilerTarget();
-      outputEditor.session.setOption("mode", "ace/mode/dart");
-    } else if (type == "ast") {
-      compiler = new AstCompilerTarget();
-      outputEditor.session.setOption("mode", "ace/mode/json");
-    } else if (type == "tiny-ast") {
-      compiler = new TinyAstCompilerTarget();
-      outputEditor.session.setOption("mode", "ace/mode/json");
+  if (result.isFailure) {
+    print(result);
+    var annotations = [];
+
+    var pstr = result.toPositionString();
+
+    if (pstr.contains(":")) {
+      var x = int.parse(pstr.split(":").first) - 1;
+      inputEditor.session.setAnnotations([
+        new ace.Annotation(row: x, text: result.message, type: ace.Annotation.ERROR)
+      ]);
+      return;
     } else {
-      window.alert("Unknown Target Type: ${type}");
+      window.alert("Parser Error: ${result}");
       return;
     }
-
-    var out = await compiler.compile(result.value);
-
-    if (type == "js") {
-      out = JS.context.callMethod("js_beautify", [out, new JS.JsObject.jsify({
-        "indent_size": 2
-      })]);
-    } else if (type == "ast" || type == "tiny-ast") {
-      out = formatJSON(out);
-    }
-
-    outputEditor.setValue(out, -1);
-  } catch (e) {
-    print(e);
   }
+
+  CompilerTarget compiler;
+
+  if (type == "js") {
+    compiler = new JsCompilerTarget();
+  } else if (type == "dart") {
+    compiler = new DartCompilerTarget();
+    outputEditor.session.setOption("mode", "ace/mode/dart");
+  } else if (type == "ast") {
+    compiler = new AstCompilerTarget();
+    outputEditor.session.setOption("mode", "ace/mode/json");
+  } else if (type == "tiny-ast") {
+    compiler = new TinyAstCompilerTarget();
+    outputEditor.session.setOption("mode", "ace/mode/json");
+  } else {
+    window.alert("Unknown Target Type: ${type}");
+    return;
+  }
+
+  var out = await compiler.compile(result.value);
+
+  if (type == "js") {
+    out = JS.context.callMethod("js_beautify", [out, new JS.JsObject.jsify({
+      "indent_size": 2
+    })]);
+  } else if (type == "ast" || type == "tiny-ast") {
+    out = formatJSON(out);
+  }
+
+  outputEditor.setValue(out, -1);
 }
