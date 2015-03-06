@@ -101,6 +101,8 @@ recompile() async {
     }
   }
 
+  inputEditor.session.setAnnotations([]);
+
   CompilerTarget compiler;
 
   if (type == "js") {
