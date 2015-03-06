@@ -3358,7 +3358,11 @@ u.Z("setAnnotations",[H.J(new P.Tz(t),[null])])
 z=1
 break}else{window.alert("Parser Error: "+s.X(0))
 z=1
-break}}else ;u=$.t5
+break}}else ;u=$.O.Q.Z("getSession",null)
+t=[]
+C.Nm.Ay(t,H.J(new H.A8(H.J(new H.A8([],B.Np()),[null,null]),P.En()),[null,null]))
+u.Z("setAnnotations",[H.J(new P.Tz(t),[null])])
+u=$.t5
 if(u==="js"){p=new S.Qd(new P.Rn(""),H.J([],[P.I]),H.J([],[P.I]),!1,[],P.Ls(null,null,null,P.I),new H.VR("\\s{2,}(?=([^\"]*(\"|')[^\"']*(\"|'))*[^\"']*$)",H.v4("\\s{2,}(?=([^\"]*(\"|')[^\"']*(\"|'))*[^\"']*$)",!1,!0,!1),null,null),!1)
 $.R.Q.Z("getSession",null).Z("setOption",["mode","ace/mode/javascript"])}else if(u==="dart"){p=new S.RT(!1)
 $.R.Q.Z("getSession",null).Z("setOption",["mode","ace/mode/dart"])}else if(u==="ast"){p=new S.Ub(!1)
