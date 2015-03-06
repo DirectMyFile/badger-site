@@ -2755,7 +2755,7 @@ SC:{
 $1:[function(a){return"  "+H.d(J.Lz(a))},null,null,2,0,null,18,"call"]},
 cc:{
 "^":"h7;",
-wE:["oi",function(a){var z,y,x,w
+wE:["oi",function(a){var z,y,x,w,v
 z=this.RP(this.gYK())
 y=new E.Su(C.l0,"whitespace expected")
 x=new E.t4(0,-1,y)
@@ -2765,11 +2765,15 @@ z=this.RP(this.ghY())
 y=new E.Su(C.l0,"whitespace expected")
 w=new E.t4(0,-1,y)
 w.uk(y,0,-1)
-w=x.kJ(new E.Qj(null,z.kc(w)))
+w=w.kJ(E.Pw("\n",null).zq(E.Pw(";",null)))
+y=new E.Su(C.l0,"whitespace expected")
+v=new E.t4(0,-1,y)
+v.uk(y,0,-1)
+v=x.kJ(z.kc(w.kJ(v)))
 z=new E.Su(C.l0,"whitespace expected")
 y=new E.t4(0,-1,z)
 y.uk(z,0,-1)
-return new E.OA("end of input expected",w.kJ(y))},"$0","gJ",0,0,0],
+return new E.OA("end of input expected",v.kJ(y))},"$0","gJ",0,0,0],
 pl:["LU",function(){return this.RP(this.grA()).zq(this.RP(this.gcT())).zq(this.RP(this.gfC())).zq(this.RP(this.gP5())).zq(this.RP(this.ghP())).zq(this.RP(this.gJa())).zq(this.RP(this.grj())).zq(this.RP(this.gLp())).zq(this.RP(this.gcV())).zq(this.RP(this.gEV())).kJ(new E.Qj(null,E.Pw(";",null))).io(0)},"$0","ghY",0,0,0],
 h4:["vP",function(){return E.Qk("break",null)},"$0","gJa",0,0,0],
 Mg:["PL",function(){return E.Qk("true",null).zq(E.Qk("false",null))},"$0","gBt",0,0,0],
@@ -2809,7 +2813,7 @@ y=new E.Su(C.l0,"whitespace expected")
 w=new E.t4(0,-1,y)
 w.uk(y,0,-1)
 return z.kJ(x.kJ(w))},"$0","gLp",0,0,0],
-Xb:["yM",function(){return E.Pw("[",null).kJ(this.RP(this.gre())).kJ(E.Pw("]",null))},"$0","gbE",0,0,0],
+Xb:["yM",function(){return E.Pw("[",null).kJ(this.RP(this.gre())).kJ(new E.Qj(null,E.Pw(",",null))).kJ(E.Pw("]",null))},"$0","gbE",0,0,0],
 KP:["qT",function(){var z,y,x
 z=this.RP(this.gF0())
 y=new E.Su(C.l0,"whitespace expected")
@@ -2885,7 +2889,7 @@ w=w.kJ(E.Pw(",",null))
 x=new E.Su(C.l0,"whitespace expected")
 v=new E.t4(0,-1,x)
 v.uk(x,0,-1)
-return z.kJ(y.kc(w.kJ(v))).kJ(E.Pw(")",null)).kJ(this.RP(this.gkb()))},"$0","grA",0,0,0],
+return z.kJ(new E.Qj(null,y.kc(w.kJ(v)))).kJ(E.Pw(")",null)).kJ(this.RP(this.gkb()))},"$0","grA",0,0,0],
 Ht:["ld",function(){return E.Qk("[]",null)},"$0","gWk",0,0,0],
 fP:["ux",function(){var z,y,x
 z=E.Qk("let",null).zq(E.Qk("var",null))
@@ -3008,7 +3012,7 @@ z=E.Pw("{",null)
 y=new E.Su(C.l0,"whitespace expected")
 x=new E.t4(0,-1,y)
 x.uk(y,0,-1)
-x=z.kJ(x).kJ(new E.Qj(null,this.RP(this.gDt()).kc(E.Pw(",",null).bS(0))))
+x=z.kJ(x).kJ(new E.Qj(null,this.RP(this.gDt()).kc(E.Pw(",",null).bS(0)))).kJ(new E.Qj(null,E.Pw(",",null)))
 z=new E.Su(C.l0,"whitespace expected")
 y=new E.t4(0,-1,z)
 y.uk(z,0,-1)
@@ -3285,14 +3289,16 @@ rC:{
 "^":"r:2;",
 $1:[function(a){var z,y
 z=J.U(a)
-y=J.vo(z.p(a,3),new M.dv()).br(0)
+y=z.p(a,3)!=null?J.vo(z.p(a,3),new M.dv()).br(0):[]
 return new M.WP(z.p(a,1),y,z.p(a,5))},null,null,2,0,null,18,"call"]},
 dv:{
 "^":"r:2;",
 $1:[function(a){return typeof a==="string"},null,null,2,0,null,18,"call"]},
 MO:{
 "^":"r:2;",
-$1:[function(a){return new M.Zg(J.vo(J.Q(a,3),new M.hc()).br(0))},null,null,2,0,null,18,"call"]},
+$1:[function(a){var z=J.U(a)
+z=z.p(a,3)==null?[]:J.vo(z.p(a,3),new M.hc()).br(0)
+return new M.Zg(z)},null,null,2,0,null,18,"call"]},
 hc:{
 "^":"r:2;",
 $1:[function(a){return!!J.t(a).$isLF},null,null,2,0,null,18,"call"]},
@@ -7344,7 +7350,7 @@ I.$lazy($,"nullLiteralPropertyPattern","tt","Bi",function(){return H.cM(function
 I.$lazy($,"undefinedPropertyPattern","dt","eA",function(){return H.cM(H.Mj(void 0))})
 I.$lazy($,"undefinedLiteralPropertyPattern","A7","ko",function(){return H.cM(function(){try{(void 0).$method$}catch(z){return z.message}}())})
 I.$lazy($,"_Object","xV","MQ",function(){return J.Q(B.wO(),"Object")})
-I.$lazy($,"MAPPING","YI","EJ",function(){return P.B(["type","a","immutable","b","reference","c","identifier","d","value","e","declarations","f","statements","g","isInitialDefine","h","op","i","components","j","args","k","method call","l","access","m","block","n","operator","o","assignment","p","string literal","q","left","r","right","s","variable reference","t","for in","u","if","v","while","w","function definition","x","anonymous function","y","import declaration","z","integer literal","+","double literal","-","hexadecimal literal","@","ternary operator",">","boolean literal",">","range literal",".","identifiers","?"],null,null)})
+I.$lazy($,"MAPPING","YI","EJ",function(){return P.B(["type","a","immutable","b","reference","c","identifier","d","value","e","declarations","f","statements","g","isInitialDefine","h","op","i","components","j","args","k","method call","l","access","m","block","n","operator","o","assignment","p","string literal","q","left","r","right","s","variable reference","t","for in","u","if","v","while","w","function definition","x","anonymous function","y","import declaration","z","integer literal","+","double literal","-","hexadecimal literal","@","ternary operator",">","boolean literal",">","range literal",".","identifiers","?","list definition","|","map definition","["],null,null)})
 I.$lazy($,"scheduleImmediateClosure","Mn","zp",function(){return P.Oj()})
 I.$lazy($,"_toStringVisiting","nM","Ex",function(){return[]})
 I.$lazy($,"context","N","rj",function(){return P.ND(self)})
