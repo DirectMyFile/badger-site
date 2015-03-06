@@ -3367,7 +3367,7 @@ $.T.toString
 z=J.Q(z,"ace").Z("edit",["splitter-right"])
 J.X(z,"$blockScrolling",1/0)
 $.R=new B.S(null,null,null,null,null,null,null,null,null,z,null)
-$.O.Y("func greet(name) {\n  return \"Hello $(name)\"\n}\n\nlet names = [\"Kenneth\", \"Logan\", \"Sam\", \"Mike\"]\n\nfor name in names {\n  print(greet(name))\n}\n",-1)
+$.O.Y("func greet(name) {\n  return \"Hello $(name)\"\n}\n\nlet names = [\"Kenneth\", \"Logan\", \"Sam\", \"Mike\"]\n\nfor name in names {\n  window.alert(name)\n}\n",-1)
 $.R.Q.Z("setOption",["useWorker",!1])
 $.R.Q.Z("getSession",null).Z("setOption",["mode","ace/mode/javascript"])
 $.R.Q.Z("setOption",["readOnly",!0])
@@ -3431,9 +3431,9 @@ Lb:{
 "^":"r:2;Q",
 $1:[function(a){var z
 a=J.SW(this.Q)
-if(a==="hello")z="print(\"Hello World\")\n"
+if(a==="hello")z="window.alert(\"Hello World\")\n"
 else{if(a==="greeting");else{window.alert("Unknown Example: "+H.d(a))
-return}z="func greet(name) {\n  return \"Hello $(name)\"\n}\n\nlet names = [\"Kenneth\", \"Logan\", \"Sam\", \"Mike\"]\n\nfor name in names {\n  print(greet(name))\n}\n"}$.O.Y(z,-1)
+return}z="func greet(name) {\n  return \"Hello $(name)\"\n}\n\nlet names = [\"Kenneth\", \"Logan\", \"Sam\", \"Mike\"]\n\nfor name in names {\n  window.alert(name)\n}\n"}$.O.Y(z,-1)
 X.Ij()},null,null,2,0,null,3,"call"]},
 QA:{
 "^":"r:2;",
