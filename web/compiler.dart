@@ -77,6 +77,10 @@ void main() {
 
   recompile();
   inputEditor.focus();
+
+  querySelector("#run").onClick.listen((e) {
+    JS.context.callMethod("eval", ["(function() {" + outputEditor.session.value + "})();"]);
+  });
 }
 
 recompile() async {
@@ -133,4 +137,5 @@ recompile() async {
   }
 
   outputEditor.setValue(out, -1);
+  querySelector("#run").hidden = type != "js";
 }
