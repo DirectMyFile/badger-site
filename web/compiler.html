@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badger Compiler Demo</title>
+    <link href="style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <h2>Badger Compiler Demo</h2>
+    Compiler Target: <select id="compiler">
+      <option value="js">JavaScript</option>
+      <option value="dart">Dart</option>
+      <option value="ast">AST</option>
+      <option value="tiny-ast">Tiny AST</option>
+    </select>
+    &nbsp;&nbsp;
+    Example: <select id="example">
+      <option value="greeting">Greeting</option>
+      <option value="hello">Hello World</option>
+    </select>
+    <br/><br/>
+
+    <div id="splitter-container">
+      <div id="splitter-left"></div>
+      <div id="splitter-right"></div>
+    </div>
+
+    <script type="application/dart" src="compiler.dart"></script>
+    <script src="packages/browser/dart.js"></script>
+    <script src="js/ace.js"></script>
+    <script src="js/beautify.js"></script>
+  </body>
+</html>
