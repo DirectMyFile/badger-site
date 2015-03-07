@@ -2684,9 +2684,9 @@ if(s){t.Q+=";"
 o.ot(new M.Ep("runTests",[]))}else ;r=u.yw()
 t=t.Q
 t=u.U4(r+(t.charCodeAt(0)==0?t:t)+u.Gk())
-r=H.v4("(\u03bb.)+(\u03bb)",!1,!0,!1)
+r=H.v4("(\\\u03bb\\.)+(\\\u03bb)",!1,!0,!1)
 H.Yx("\u03bb")
-x=H.ys(t,new H.VR("(\u03bb.)+(\u03bb)",r,null,null),"\u03bb")
+x=H.ys(t,new H.VR("(\\\u03bb\\.)+(\\\u03bb)",r,null,null),"\u03bb")
 z=1
 break
 case 1:return H.AZ(x,0,y,null)
@@ -2694,17 +2694,17 @@ case 2:return H.AZ(v,1,y)}}return H.AZ(null,body,y,null)},
 pO:function(a,b){if(b==null)this.e.push(a)
 else this.I7("var "+a+" = "+b)},
 I7:function(a){return this.pO(a,null)},
-yw:function(){var z,y
+yw:function(){var z,y,x
 z=this.a.Q
 y=this.b
 y=H.J(new H.oi(y,new S.bW(z.charCodeAt(0)==0?z:z)),[H.Z(y,0)])
 this.f=P.tM(y,H.W8(y,"mW",0))
 z=this.e
 z=z.length!==0?C.Nm.zV(z,";")+";":""
-y=["\u03bb"]
-C.Nm.Ay(y,this.f)
-y=z+("(function("+C.Nm.zV(y,",")+"){")
-z=this.Q.p(0,"allow-injection")!==!1?y+"typeof badgerInjectGlobal !== \"undefined\" ? badgerInjectGlobal(\u03bb) : null;":y
+x=["\u03bb"]
+C.Nm.Ay(x,this.f.br(0))
+z+="(function("+C.Nm.zV(x,",")+"){"
+if(this.Q.p(0,"allow-injection")!==!1)z+="typeof badgerInjectGlobal !== \"undefined\" ? badgerInjectGlobal(\u03bb) : null;"
 return z.charCodeAt(0)==0?z:z},
 U4:function(a){a=C.xB.bS(a)
 H.Yx("")
