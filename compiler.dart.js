@@ -2462,7 +2462,7 @@ w=!1}if(w)y.Q=v+";"
 if(J.pB(z.gQh(),a)!==J.wS(z.gQh())-1)y.Q+=";"}y.Q+="})"},
 Oh:function(a){this.Q.Q+="return "
 this.xn(a.Q)},
-RY:function(a){this.Q.Q+="return false"},
+RY:function(a){this.Q.Q+="throw \u03bbbreaker;"},
 Hh:function(a){var z,y,x
 if(a.Q){z=this.Q
 z.Q+="\u03bblet(\u03bb,\""+H.d(a.a)+"\","
@@ -2629,14 +2629,15 @@ y.push(this.U4("      function(context, name, value) {\n        Object.definePro
 z.push("\u03bbvar")
 y.push(this.U4("      function(context, name, value) {\n        var m = value;\n        Object.defineProperty(context, name, {\n          enumerable: true,\n          get: function() {\n            return m;\n          },\n          set: function(v) {\n            m = v;\n          }\n        });\n      }\n    "))
 z.push("\u03bbfor")
-y.push(this.U4("      function(b, v, \u03bb) {\n        for (var i = 0; i < v.length; i++) {\n          var r = b(v[i], Object.create(\u03bb));\n          if (r === false) {\n            return false;\n          }\n        }\n      }\n    "))
+y.push(this.U4("      function(b, v, \u03bb) {\n        for (var i = 0; i < v.length; i++) {\n          try {\n            b(v[i], Object.create(\u03bb));\n          } catch (e) {\n            if (e === BADGER_BREAK_NOW) {\n              break;\n            }\n          }\n        }\n      }\n    "))
 z.push("\u03bbwhile")
-y.push(this.U4("      function(\u03bb, c, t) {\n        while (\u03bbbool(c)) {\n          var r = t(Object.create(\u03bb));\n          if (r === false) {\n            break;\n          }\n        }\n      }\n    "))
+y.push(this.U4("      function(\u03bb, c, t) {\n        while (\u03bbbool(c)) {\n          try {\n            t(Object.create(\u03bb));\n          } catch (e) {\n            if (e === \u03bbbreaker) {\n              break;\n            }\n          }\n        }\n      }\n    "))
 z.push("\u03bbif")
-y.push(this.U4("      function(\u03bb, c, t, f) {\n        if (\u03bbbool(c)) {\n          return t(Object.create(\u03bb));\n        } else if (typeof f !== \"undefined\") {\n          return f(Object.create(\u03bb));\n        }\n      }\n    "))
+y.push(this.U4("      function(\u03bb, c, t, f) {\n        if (\u03bbbool(c)) {\n          t(Object.create(\u03bb));\n        } else if (typeof f !== \"undefined\") {\n          f(Object.create(\u03bb));\n        }\n      }\n    "))
 z.push("\u03bbrange")
 y.push(this.U4("      function(l, u) {\n        var m = [];\n        for (var i = l; i <= u; i++) {\n          m.push(i);\n        }\n        return m;\n      }\n    "))
 this.pO("\u03bbbool","      function(value) {\n        if (value === null || typeof value === \"undefined\") {\n          return false;\n        } else if (typeof value === \"number\") {\n          return value !== 0.0 && value !== 0;\n        } else if (typeof value === \"string\") {\n          return value.length !== 0;\n        } else if (typeof value === \"boolean\") {\n          return value === true;\n        } else {\n          return true;\n        }\n      }\n    ")
+this.pO("\u03bbbreaker","    \"BADGER_BREAK_NOW\"\n    ")
 z.push("\u03bbload")
 y.push(this.U4("      function(\u03bb, m) {\n        Object.keys(m).forEach(function(k) {\n          \u03bb[k] = m[k];\n        });\n      }\n    "))
 this.d.push(["print","function(obj) {console.log(obj.toString());}"])
