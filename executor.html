@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Badger Executor</title>
+  </head>
+
+  <body>
+    <div id="content"></div>
+
+    <script>
+    function onMessage(event) {
+      eval(event.data.code);
+    }
+
+    if (!window.opener) {
+      window.alert("This page only works when ran from the Compiler Demo.");
+    } else {
+      window.addEventListener("message", onMessage);
+
+      function badgerInjectGlobal(ctx) {
+        ctx.window = window;
+      }
+
+      function badgerPrint(msg) {
+        var x = document.querySelector("#content");
+        x.innerHTML += msg + "<br/>";
+      }
+
+      document.addEventListener("DOMContentLoaded", function(event) {
+        window.opener.postMessage({
+          "command": "ready"
+        }, "*");
+      });
+    }
+    </script>
+  </body>
+</html>

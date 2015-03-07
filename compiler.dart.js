@@ -628,7 +628,7 @@ o=new H.yo(0,null,!1)
 n=new H.aX(y,q,p,init.createNewIsolate(),o,new H.ku(H.Uh()),new H.ku(H.Uh()),!1,!1,[],P.Ls(null,null,null,null),null,null,!1,!0,P.Ls(null,null,null,null))
 p.h(0,0)
 n.ac(0,o)
-init.globalState.e.Q.B7(new H.IY(n,new H.jl(w,v,u,t,s,r),"worker-start"))
+init.globalState.e.Q.B7(new H.IY(n,new H.bL(w,v,u,t,s,r),"worker-start"))
 init.globalState.c=n
 init.globalState.e.bL()
 break
@@ -852,7 +852,7 @@ if(z.gRW()){z.gC9().push(this)
 return}z.vV(this.a)}},
 JH:{
 "^":"a;"},
-jl:{
+bL:{
 "^":"r:0;Q,a,b,c,d,e",
 $0:[function(){H.Z7(this.Q,this.a,this.b,this.c,this.d,this.e)},null,null,0,0,null,"call"]},
 vK:{
@@ -888,7 +888,7 @@ Ua:{
 "^":"r:0;Q,a",
 $0:[function(){var z=this.Q.a
 if(!z.gGl())z.FL(this.a)},null,null,0,0,null,"call"]},
-ns:{
+bM:{
 "^":"Iy;a,b,Q",
 zY:function(a){var z,y,x
 z=P.B(["command","message","port",this,"msg",a],null,null)
@@ -897,7 +897,7 @@ if(init.globalState.r===!0){init.globalState.z.toString
 self.postMessage(y)}else{x=init.globalState.ch.p(0,this.a)
 if(x!=null)x.postMessage(y)}},
 m:function(a,b){if(b==null)return!1
-return b instanceof H.ns&&J.mG(this.a,b.a)&&J.mG(this.Q,b.Q)&&J.mG(this.b,b.b)},
+return b instanceof H.bM&&J.mG(this.a,b.a)&&J.mG(this.Q,b.Q)&&J.mG(this.b,b.b)},
 giO:function(a){var z,y,x
 z=J.Q1(this.a,16)
 y=J.Q1(this.Q,8)
@@ -969,7 +969,7 @@ return["map",w,P.z(z,!0,H.W8(z,"mW",0))]}if(!!z.$isvm)return this.OD(a)
 if(!!z.$isGv)this.jf(a)
 if(!!z.$isSF)this.kz(a,"RawReceivePorts can't be transmitted:")
 if(!!z.$isJM)return this.PE(a)
-if(!!z.$isns)return this.ff(a)
+if(!!z.$isbM)return this.ff(a)
 if(!!z.$isr){v=a.$name
 if(v==null)this.kz(a,"Closures can't be transmitted:")
 return["function",v]}return["dart",init.classIdExtractor(a),this.jG(init.classFieldsExtractor(a))]},"$1","gpC",2,0,2,4],
@@ -1095,7 +1095,7 @@ if(J.mG(y,init.globalState.a)){v=init.globalState.y.p(0,x)
 if(v==null)return
 u=v.Zt(w)
 if(u==null)return
-t=new H.JM(u,x)}else t=new H.ns(y,w,x)
+t=new H.JM(u,x)}else t=new H.bM(y,w,x)
 this.a.push(t)
 return t},
 ZQ:function(a){var z,y,x,w,v,u,t
@@ -1632,7 +1632,7 @@ s=w+u
 if(s<0||s>=x.length)return H.e(x,s)
 v.q(0,new H.GD(t),x[s])}return v}},
 FD:{
-"^":"a;Q,a,b,c,d,e,f,r",
+"^":"a;Q,Rn:a>,b,c,d,e,f,r",
 BX:function(a,b){var z=this.c
 if(typeof b!=="number")return b.w()
 if(b<z)return
@@ -2023,6 +2023,7 @@ C.Nm.sv(y,w)
 return H.pO(this,y)},
 wL:function(a,b,c){if(c>b.length)throw H.b(P.TE(c,0,b.length,null,null))
 return this.Oj(b,c)},
+$iswL:1,
 static:{v4:function(a,b,c,d){var z,y,x,w,v
 H.Yx(a)
 z=b?"m":""
@@ -2156,7 +2157,7 @@ yX:function(a){var z=P.zV($.MQ(),null)
 a.aN(0,new B.Ku(z))
 return z},
 tw:[function(a){var z=J.V(a)
-return B.yX(P.B(["html",z.gck(a),"row",a.geH(),"text",z.ga4(a),"type",z.gr9(a)],null,null))},"$1","Np",2,0,23,16],
+return B.yX(P.B(["html",z.gck(a),"row",a.geH(),"text",z.ga4(a),"type",z.gr9(a)],null,null))},"$1","Np",2,0,26,16],
 op:function(a){var z,y,x,w,v,u,t
 z=J.U(a)
 y=z.p(a,"action")
@@ -2218,8 +2219,7 @@ Ub:{
 "^":"jt;Q",
 XF:function(a){var z=0,y=new P.Zh(),x,w=2,v,u=this,t
 function body(b,c){if(b===1){v=c
-z=w}while(true)switch(z){case 0:u.Q.p(0,"pretty")
-t=C.xr.gZE()
+z=w}while(true)switch(z){case 0:t=u.Q.p(0,"pretty")===!0?new P.oj("  ",null):C.xr.gZE()
 x=P.ch(new M.U5(a).M3(),t.a,t.Q)
 z=1
 break
@@ -2230,8 +2230,7 @@ XE:{
 "^":"jt;Q",
 XF:function(a){var z=0,y=new P.Zh(),x,w=2,v,u=this,t
 function body(b,c){if(b===1){v=c
-z=w}while(true)switch(z){case 0:u.Q.p(0,"pretty")
-t=C.xr.gZE()
+z=w}while(true)switch(z){case 0:t=u.Q.p(0,"pretty")===!0?new P.oj("  ",null):C.xr.gZE()
 x=P.ch(S.Q8(new M.U5(a).M3(),new S.uh()),t.a,t.Q)
 z=1
 break
@@ -2645,42 +2644,49 @@ p4:{
 $1:[function(a){return"\""+H.d(a)+"\": "+H.d(a)},null,null,2,0,null,18,"call"]},
 Qd:{
 "^":"jt;a,b,c,d,e,f,r,Q",
-XF:function(a){var z=0,y=new P.Zh(),x,w=2,v,u=this,t,s
+XF:function(a){var z=0,y=new P.Zh(),x,w=2,v,u=this,t,s,r,q,p,o
 function body(b,c){if(b===1){v=c
 z=w}while(true)switch(z){case 0:t=u.Q
-t.p(0,"isTestSuite")
-t.p(0,"hooks")
-t.p(0,"teamcity")
-t=u.b
-t.push("\u03bblet")
-s=u.c
-s.push(u.U4("      function(context, name, value) {\n        Object.defineProperty(context, name, {\n          enumerable: true,\n          get: function() {\n            return value;\n          },\n          set: function() {\n            throw new Error('Unable to set ' + name + ', it is immutable.');\n          }\n        });\n      }\n    "))
-t.push("\u03bbvar")
-s.push(u.U4("      function(context, name, value) {\n        var m = value;\n        Object.defineProperty(context, name, {\n          enumerable: true,\n          get: function() {\n            return m;\n          },\n          set: function(v) {\n            m = v;\n          }\n        });\n      }\n    "))
-t.push("\u03bbfor")
-s.push(u.U4("      function(b, v, \u03bb) {\n        for (var i = 0; i < v.length; i++) {\n          try {\n            b(v[i], Object.create(\u03bb));\n          } catch (e) {\n            if (e === BADGER_BREAK_NOW) {\n              break;\n            }\n          }\n        }\n      }\n    "))
-t.push("\u03bbwhile")
-s.push(u.U4("      function(\u03bb, c, t) {\n        while (\u03bbbool(c)) {\n          try {\n            t(Object.create(\u03bb));\n          } catch (e) {\n            if (e === \u03bbbreaker) {\n              break;\n            }\n          }\n        }\n      }\n    "))
-t.push("\u03bbif")
-s.push(u.U4("      function(\u03bb, c, t, f) {\n        if (\u03bbbool(c)) {\n          t(Object.create(\u03bb));\n        } else if (typeof f !== \"undefined\") {\n          f(Object.create(\u03bb));\n        }\n      }\n    "))
-t.push("\u03bbrange")
-s.push(u.U4("      function(l, u) {\n        var m = [];\n        for (var i = l; i <= u; i++) {\n          m.push(i);\n        }\n        return m;\n      }\n    "))
+s=t.p(0,"isTestSuite")===!0
+r=t.p(0,"hooks")
+t=t.p(0,"teamcity")
+q=u.b
+q.push("\u03bblet")
+p=u.c
+p.push(u.U4("      function(context, name, value) {\n        Object.defineProperty(context, name, {\n          enumerable: true,\n          get: function() {\n            return value;\n          },\n          set: function() {\n            throw new Error('Unable to set ' + name + ', it is immutable.');\n          }\n        });\n      }\n    "))
+q.push("\u03bbvar")
+p.push(u.U4("      function(context, name, value) {\n        var m = value;\n        Object.defineProperty(context, name, {\n          enumerable: true,\n          get: function() {\n            return m;\n          },\n          set: function(v) {\n            m = v;\n          }\n        });\n      }\n    "))
+q.push("\u03bbfor")
+p.push(u.U4("      function(b, v, \u03bb) {\n        for (var i = 0; i < v.length; i++) {\n          try {\n            b(v[i], Object.create(\u03bb));\n          } catch (e) {\n            if (e === BADGER_BREAK_NOW) {\n              break;\n            }\n          }\n        }\n      }\n    "))
+q.push("\u03bbwhile")
+p.push(u.U4("      function(\u03bb, c, t) {\n        while (\u03bbbool(c)) {\n          try {\n            t(Object.create(\u03bb));\n          } catch (e) {\n            if (e === \u03bbbreaker) {\n              break;\n            }\n          }\n        }\n      }\n    "))
+q.push("\u03bbif")
+p.push(u.U4("      function(\u03bb, c, t, f) {\n        if (\u03bbbool(c)) {\n          t(Object.create(\u03bb));\n        } else if (typeof f !== \"undefined\") {\n          f(Object.create(\u03bb));\n        }\n      }\n    "))
+q.push("\u03bbrange")
+p.push(u.U4("      function(l, u) {\n        var m = [];\n        for (var i = l; i <= u; i++) {\n          m.push(i);\n        }\n        return m;\n      }\n    "))
 u.pO("\u03bbbool","      function(value) {\n        if (value === null || typeof value === \"undefined\") {\n          return false;\n        } else if (typeof value === \"number\") {\n          return value !== 0.0 && value !== 0;\n        } else if (typeof value === \"string\") {\n          return value.length !== 0;\n        } else if (typeof value === \"boolean\") {\n          return value === true;\n        } else {\n          return true;\n        }\n      }\n    ")
 u.pO("\u03bbbreaker","    \"BADGER_BREAK_NOW\"\n    ")
-t.push("\u03bbload")
-s.push(u.U4("      function(\u03bb, m) {\n        Object.keys(m).forEach(function(k) {\n          \u03bb[k] = m[k];\n        });\n      }\n    "))
-u.d.push(["print","function(obj) {console.log(obj.toString());}"])
-t=u.d
-t.push(["async","function(cb) {setTimeout(cb, 0);}"])
-t.push(["args","typeof process === \"undefined\" ? [] : process.argv.slice(2)"])
-t=u.a
-new S.OT(t).DV(a)
-s=u.yw()
+q.push("\u03bbload")
+p.push(u.U4("      function(\u03bb, m) {\n        Object.keys(m).forEach(function(k) {\n          \u03bb[k] = m[k];\n        });\n      }\n    "))
+q=u.d
+if(r===!0)q.push(["print","function(obj) {(typeof badgerPrint !== \"undefined\" ? badgerPrint : console.log)(obj.toString());}"])
+else q.push(["print","function(obj) {console.log(obj.toString());}"])
+q.push(["async","function(cb) {setTimeout(cb, 0);}"])
+q.push(["args","typeof process === \"undefined\" ? [] : process.argv.slice(2)"])
+if(s){u.pO("__tests__","[]")
+q.push(["test","        function(name, func) {\n          __tests__.push([name, func]);\n        }\n      "])
+if(t!==!0)q.push(["runTests","        function() {\n          for (var i in __tests__) {\n            var t = __tests__[i];\n\n            var name = t[0];\n            var func = t[1];\n\n            try {\n              func();\n            } catch (e) {\n              console.log(name + \": Failed\");\n              console.log(e);\n              continue;\n            }\n\n            console.log(name + \": Success\");\n          }\n        }\n      "])
+else q.push(["runTests","          function() {\n            for (var i in __tests__) {\n              var t = __tests__[i];\n\n              var name = t[0];\n              var func = t[1];\n\n              var begin = Date.now();\n              var end;\n\n              try {\n                console.log(\"##teamcity[testStarted name='\" + name + \"]\");\n                func();\n                end = Date.now();\n              } catch (e) {\n                end = Date.now();\n                console.log(\"##teamcity[testFailed name='\" + name + \" message='\" + e.toString() + \"' details='\" + e.toString() + \"]\");\n                console.log(\"##teamcity[testFinished name='\" + name + \"' duration='\" + (end - begin) + \"']\");\n                continue;\n              }\n\n              console.log(\"##teamcity[testFinished name='\" + name + \"' duration='\" + (end - begin) + \"']\");\n            }\n          }\n        "])
+q.push(["testEqual","        function(a, b) {\n          if (a !== b) {\n            throw \"Test Error: \" + a + \" != \" + b;\n          }\n        }\n      "])}else ;t=u.a
+o=new S.OT(t)
+o.DV(a)
+if(s){t.Q+=";"
+o.ot(new M.Ep("runTests",[]))}else ;r=u.yw()
 t=t.Q
-t=u.U4(s+(t.charCodeAt(0)==0?t:t)+u.Gk())
-s=H.v4("(\u03bb.)+(\u03bb)",!1,!0,!1)
+t=u.U4(r+(t.charCodeAt(0)==0?t:t)+u.Gk())
+r=H.v4("(\u03bb.)+(\u03bb)",!1,!0,!1)
 H.Yx("\u03bb")
-x=H.ys(t,new H.VR("(\u03bb.)+(\u03bb)",s,null,null),"\u03bb")
+x=H.ys(t,new H.VR("(\u03bb.)+(\u03bb)",r,null,null),"\u03bb")
 z=1
 break
 case 1:return H.AZ(x,0,y,null)
@@ -2695,9 +2701,10 @@ y=H.J(new H.oi(y,new S.bW(z.charCodeAt(0)==0?z:z)),[H.Z(y,0)])
 this.f=P.tM(y,H.W8(y,"mW",0))
 z=this.e
 z=z.length!==0?C.Nm.zV(z,";")+";":""
-z+="(function(\u03bb, "+this.f.zV(0,",")+"){"
-this.Q.p(0,"allow-injection")
-z+="typeof badgerInjectGlobal !== \"undefined\" ? badgerInjectGlobal(\u03bb) : null;"
+y=["\u03bb"]
+C.Nm.Ay(y,this.f)
+y=z+("(function("+C.Nm.zV(y,",")+"){")
+z=this.Q.p(0,"allow-injection")!==!1?y+"typeof badgerInjectGlobal !== \"undefined\" ? badgerInjectGlobal(\u03bb) : null;":y
 return z.charCodeAt(0)==0?z:z},
 U4:function(a){a=C.xB.bS(a)
 H.Yx("")
@@ -3456,7 +3463,7 @@ $.T.toString
 z=J.Q(z,"ace").Z("edit",["splitter-right"])
 J.X(z,"$blockScrolling",1/0)
 $.R=new B.S(null,null,null,null,null,null,null,null,null,z,null)
-$.O.Y("func greet(name) {\n  return \"Hello $(name)\"\n}\n\nlet names = [\"Kenneth\", \"Logan\", \"Sam\", \"Mike\"]\n\nfor name in names {\n  window.alert(name)\n}\n",-1)
+$.O.Y("func greet(name) {\n  return \"Hello $(name)\"\n}\n\nlet names = [\"Kenneth\", \"Logan\", \"Sam\", \"Mike\"]\n\nfor name in names {\n  print(name)\n}\n",-1)
 $.R.Q.Z("setOption",["useWorker",!1])
 $.R.Q.Z("getSession",null).Z("setOption",["mode","ace/mode/javascript"])
 $.R.Q.Z("setOption",["readOnly",!0])
@@ -3492,7 +3499,9 @@ t=[]
 C.Nm.Ay(t,H.J(new H.A8(H.J(new H.A8([],B.Np()),[null,null]),P.En()),[null,null]))
 u.Z("setAnnotations",[H.J(new P.Tz(t),[null])])
 u=$.t5
-if(u==="js"){p=new S.Qd(new P.Rn(""),H.J([],[P.I]),H.J([],[P.I]),[],[],P.Ls(null,null,null,P.I),new H.VR("\\s{2,}(?=([^\"]*(\"|')[^\"']*(\"|'))*[^\"']*$)",H.v4("\\s{2,}(?=([^\"]*(\"|')[^\"']*(\"|'))*[^\"']*$)",!1,!0,!1),null,null),P.A(null,null))
+if(u==="js"){u=P.A(null,null)
+p=new S.Qd(new P.Rn(""),H.J([],[P.I]),H.J([],[P.I]),[],[],P.Ls(null,null,null,P.I),new H.VR("\\s{2,}(?=([^\"]*(\"|')[^\"']*(\"|'))*[^\"']*$)",H.v4("\\s{2,}(?=([^\"]*(\"|')[^\"']*(\"|'))*[^\"']*$)",!1,!0,!1),null,null),u)
+u.q(0,"hooks",!0)
 $.R.Q.Z("getSession",null).Z("setOption",["mode","ace/mode/javascript"])}else if(u==="dart"){p=new S.RY(P.A(null,null))
 $.R.Q.Z("getSession",null).Z("setOption",["mode","ace/mode/dart"])}else if(u==="ast"){p=new S.Ub(P.A(null,null))
 $.R.Q.Z("getSession",null).Z("setOption",["mode","ace/mode/json"])}else if(u==="tiny-ast"){p=new S.XE(P.A(null,null))
@@ -3520,14 +3529,20 @@ Lb:{
 "^":"r:2;Q",
 $1:[function(a){var z
 a=J.SW(this.Q)
-if(a==="hello")z="window.alert(\"Hello World\")\n"
-else if(a==="greeting")z="func greet(name) {\n  return \"Hello $(name)\"\n}\n\nlet names = [\"Kenneth\", \"Logan\", \"Sam\", \"Mike\"]\n\nfor name in names {\n  window.alert(name)\n}\n"
+if(a==="hello")z="print(\"Hello World\")\n"
+else if(a==="greeting")z="func greet(name) {\n  return \"Hello $(name)\"\n}\n\nlet names = [\"Kenneth\", \"Logan\", \"Sam\", \"Mike\"]\n\nfor name in names {\n  print(name)\n}\n"
 else{if(a==="fib");else{window.alert("Unknown Example: "+H.d(a))
-return}z="func fib(n) {\n  return ((n == 0) || (n == 1)) ? n : fib(n - 1) + fib(n - 2)\n}\n\nwindow.alert(fib(10))\n"}$.O.Y(z,-1)
+return}z="func fib(n) {\n  return ((n == 0) || (n == 1)) ? n : fib(n - 1) + fib(n - 2)\n}\n\nprint(fib(10))\n"}$.O.Y(z,-1)
 X.Ij()},null,null,2,0,null,3,"call"]},
 QA:{
 "^":"r:2;",
-$1:[function(a){$.rj().Z("eval",[C.xB.g("(function() {",$.R.Q.Z("getSession",null).Z("getValue",null))+"})();"])},null,null,2,0,null,3,"call"]}},1],["","",,H,{
+$1:[function(a){var z,y
+z=C.ol.Po(window,"executor.html","Badger Script Execution")
+y=window
+C.ol.v0(y,"message",new X.oZ(z),null)},null,null,2,0,null,3,"call"]},
+oZ:{
+"^":"r:2;Q",
+$1:[function(a){if(J.mG(J.Q(J.ns(a),"command"),"ready"))J.Ih(this.Q,P.B(["code",J.M($.R.Q.Z("getSession",null).Z("getValue",null))],null,null),window.location.href)},null,null,2,0,null,3,"call"]}},1],["","",,H,{
 "^":"",
 Wp:function(){return new P.lj("No element")},
 ar:function(){return new P.lj("Too few elements")},
@@ -3767,10 +3782,10 @@ new self.MutationObserver(H.tR(new P.th(z),1)).observe(y,{childList:true})
 return new P.ha(z,y,x)}else if(self.setImmediate!=null)return P.q9()
 return P.K7()},
 ZV:[function(a){++init.globalState.e.a
-self.scheduleImmediate(H.tR(new P.C6(a),0))},"$1","Sx",2,0,24],
+self.scheduleImmediate(H.tR(new P.C6(a),0))},"$1","Sx",2,0,27],
 oA:[function(a){++init.globalState.e.a
-self.setImmediate(H.tR(new P.Ft(a),0))},"$1","q9",2,0,24],
-Bz:[function(a){P.YF(C.RT,a)},"$1","K7",2,0,24],
+self.setImmediate(H.tR(new P.Ft(a),0))},"$1","q9",2,0,27],
+Bz:[function(a){P.YF(C.RT,a)},"$1","K7",2,0,27],
 VH:function(a,b){var z=H.N7()
 z=H.KT(z,[z,z]).Zg(a)
 if(z){b.toString
@@ -3816,7 +3831,7 @@ x=H.ts(w)
 v=$.X3
 v.toString
 P.L2(null,null,v,y,x)}},
-Co:[function(a){},"$1","CM",2,0,25,22],
+Co:[function(a){},"$1","CM",2,0,28,22],
 Z0:[function(a,b){var z=$.X3
 z.toString
 P.L2(null,null,z,a,b)},function(a){return P.Z0(a,null)},null,"$2","$1","bx",2,2,11,23,12,13],
@@ -4764,8 +4779,8 @@ delete z["<non-identifier-key>"]
 return z},
 B:function(a,b,c){return H.B7(a,H.J(new H.N5(0,null,null,null,null,null,0),[b,c]))},
 A:function(a,b){return H.J(new H.N5(0,null,null,null,null,null,0),[a,b])},
-Ou:[function(a,b){return J.mG(a,b)},"$2","iv",4,0,26],
-T9:[function(a){return J.kI(a)},"$1","rm",2,0,27,16],
+Ou:[function(a,b){return J.mG(a,b)},"$2","iv",4,0,29],
+T9:[function(a){return J.kI(a)},"$1","rm",2,0,20,16],
 EP:function(a,b,c){var z,y
 if(P.nH(a)){if(b==="("&&c===")")return"(...)"
 return b+"..."+c}z=[]
@@ -4959,7 +4974,7 @@ z=a.length
 for(y=0;y<z;++y){x=a[y].gyK()
 if(x==null?b==null:x===b)return y}return-1}},
 b6:{
-"^":"u3;Q,a,b,c,d,e,f",
+"^":"c9;Q,a,b,c,d,e,f",
 gu:function(a){var z=H.J(new P.zQ(this,this.f,null,null),[null])
 z.b=z.Q.d
 return z},
@@ -5082,7 +5097,7 @@ if(z==null){this.c=null
 return!1}else{this.c=z.Q
 this.b=z.a
 return!0}}}},
-u3:{
+c9:{
 "^":"Vj;"},
 mW:{
 "^":"a;",
@@ -5196,7 +5211,7 @@ z.Q=y+": "
 z.Q+=H.d(b)}},
 Sw:{
 "^":"mW;Q,a,b,c",
-gu:function(a){var z=new P.o0(this,this.b,this.c,this.a,null)
+gu:function(a){var z=new P.UQ(this,this.b,this.c,this.a,null)
 z.$builtinTypeInfo=this.$builtinTypeInfo
 return z},
 aN:function(a,b){var z,y,x
@@ -5271,7 +5286,7 @@ $ascX:null,
 static:{NZ:function(a,b){var z=H.J(new P.Sw(null,0,0,0),[b])
 z.Eo(a,b)
 return z}}},
-o0:{
+UQ:{
 "^":"a;Q,a,b,c,d",
 gk:function(){return this.d},
 D:function(){var z,y,x
@@ -5336,7 +5351,7 @@ z=null
 try{z=JSON.parse(a)}catch(w){x=H.Ru(w)
 y=x
 throw H.b(P.rr(String(y),null,null))}return P.KH(z)},
-tp:[function(a){return a.Lt()},"$1","DY",2,0,28,1],
+tp:[function(a){return a.Lt()},"$1","DY",2,0,30,1],
 uw:{
 "^":"a;Q,a,b",
 p:function(a,b){var z,y
@@ -5585,13 +5600,13 @@ for(z=this.c,y=this.b,x=0;x<a;++x)y.Q+=z}},
 QI:{
 "^":"Gs+zy;"}}],["","",,P,{
 "^":"",
-Wc:[function(a,b){return J.oE(a,b)},"$2","n4",4,0,29],
+Wc:[function(a,b){return J.oE(a,b)},"$2","n4",4,0,31],
 hl:function(a){if(typeof a==="number"||typeof a==="boolean"||null==a)return J.M(a)
 if(typeof a==="string")return JSON.stringify(a)
 return"Instance of '"+H.lh(a)+"'"},
 FM:function(a){return new P.HG(a)},
-wa:[function(a,b){return a==null?b==null:a===b},"$2","SK",4,0,30],
-xv:[function(a){return H.CU(a)},"$1","J2",2,0,31],
+wa:[function(a,b){return a==null?b==null:a===b},"$2","SK",4,0,32],
+xv:[function(a){return H.CU(a)},"$1","J2",2,0,33],
 z:function(a,b,c){var z,y
 z=H.J([],[c])
 for(y=J.Nx(a);y.D();)z.push(y.gk())
@@ -5896,7 +5911,7 @@ $isGv:1,
 Az:{
 "^":"Gv;r9:type=",
 $isAz:1,
-"%":"Blob|File"},
+"%":";Blob"},
 TP:{
 "^":"qE;",
 $isGv:1,
@@ -5905,9 +5920,12 @@ IF:{
 "^":"qE;r9:type=,M:value=",
 "%":"HTMLButtonElement"},
 nx:{
-"^":"KV;v:length=",
+"^":"KV;Rn:data=,v:length=",
 $isGv:1,
 "%":"CDATASection|CharacterData|Comment|ProcessingInstruction|Text"},
+y4:{
+"^":"w6;Rn:data=",
+"%":"CompositionEvent"},
 oe:{
 "^":"ea;M:value=",
 "%":"DeviceLightEvent"},
@@ -5986,7 +6004,7 @@ hY:{
 ea:{
 "^":"Gv;r9:type=",
 $isea:1,
-"%":"AnimationPlayerEvent|ApplicationCacheErrorEvent|AudioProcessingEvent|AutocompleteErrorEvent|BeforeUnloadEvent|CloseEvent|CompositionEvent|CustomEvent|DeviceMotionEvent|DeviceOrientationEvent|DragEvent|ExtendableEvent|FetchEvent|FocusEvent|FontFaceSetLoadEvent|GamepadEvent|HashChangeEvent|IDBVersionChangeEvent|InstallEvent|KeyboardEvent|MIDIConnectionEvent|MIDIMessageEvent|MSPointerEvent|MediaKeyEvent|MediaKeyMessageEvent|MediaKeyNeededEvent|MediaQueryListEvent|MediaStreamEvent|MediaStreamTrackEvent|MessageEvent|MouseEvent|MouseScrollEvent|MouseWheelEvent|MutationEvent|OfflineAudioCompletionEvent|OverflowEvent|PageTransitionEvent|PointerEvent|PopStateEvent|ProgressEvent|PushEvent|RTCDTMFToneChangeEvent|RTCDataChannelEvent|RTCIceCandidateEvent|RelatedEvent|ResourceProgressEvent|SVGZoomEvent|SecurityPolicyViolationEvent|SpeechRecognitionEvent|SpeechSynthesisEvent|TextEvent|TouchEvent|TrackEvent|TransitionEvent|UIEvent|WebGLContextEvent|WebKitAnimationEvent|WebKitTransitionEvent|WheelEvent|XMLHttpRequestProgressEvent;ClipboardEvent|Event|InputEvent"},
+"%":"AnimationPlayerEvent|ApplicationCacheErrorEvent|AudioProcessingEvent|AutocompleteErrorEvent|BeforeUnloadEvent|CloseEvent|CustomEvent|DeviceMotionEvent|DeviceOrientationEvent|ExtendableEvent|FetchEvent|FontFaceSetLoadEvent|GamepadEvent|HashChangeEvent|IDBVersionChangeEvent|InstallEvent|MIDIConnectionEvent|MediaKeyEvent|MediaKeyMessageEvent|MediaKeyNeededEvent|MediaQueryListEvent|MediaStreamEvent|MediaStreamTrackEvent|MutationEvent|OfflineAudioCompletionEvent|OverflowEvent|PageTransitionEvent|PopStateEvent|ProgressEvent|RTCDTMFToneChangeEvent|RTCDataChannelEvent|RTCIceCandidateEvent|RelatedEvent|ResourceProgressEvent|SecurityPolicyViolationEvent|SpeechRecognitionEvent|SpeechSynthesisEvent|TrackEvent|TransitionEvent|WebGLContextEvent|WebKitAnimationEvent|WebKitTransitionEvent|XMLHttpRequestProgressEvent;ClipboardEvent|Event|InputEvent"},
 D0:{
 "^":"Gv;",
 On:function(a,b,c,d){if(c!=null)this.v0(a,b,c,d)},
@@ -5997,6 +6015,10 @@ Ci:function(a,b,c,d){return a.removeEventListener(b,H.tR(c,1),d)},
 as:{
 "^":"qE;r9:type=",
 "%":"HTMLFieldSetElement"},
+hH:{
+"^":"Az;",
+$ishH:1,
+"%":"File"},
 Yu:{
 "^":"qE;v:length=",
 "%":"HTMLFormElement"},
@@ -6031,7 +6053,7 @@ $isqC:1,
 $iscX:1,
 $ascX:function(){return[W.KV]}},
 Sg:{
-"^":"Gv;",
+"^":"Gv;Rn:data=",
 $isSg:1,
 "%":"ImageData"},
 pA:{
@@ -6070,9 +6092,16 @@ ZY:{
 DH:{
 "^":"qE;r9:type=",
 "%":"HTMLMenuItemElement"},
+cx:{
+"^":"ea;",
+gRn:function(a){return P.o0(a.data,!0)},
+"%":"MessageEvent"},
 Qb:{
 "^":"qE;M:value=",
 "%":"HTMLMeterElement"},
+F3:{
+"^":"ea;Rn:data=",
+"%":"MIDIMessageEvent"},
 oU:{
 "^":"Gv;",
 $isGv:1,
@@ -6138,7 +6167,7 @@ KY:{
 "^":"qE;J:start=,r9:type=",
 "%":"HTMLOListElement"},
 G7:{
-"^":"qE;r9:type=",
+"^":"qE;Rn:data=,r9:type=",
 "%":"HTMLObjectElement"},
 Ql:{
 "^":"qE;M:value=",
@@ -6152,6 +6181,9 @@ HD:{
 KR:{
 "^":"qE;M:value=",
 "%":"HTMLProgressElement"},
+Mw:{
+"^":"ea;Rn:data=",
+"%":"PushEvent"},
 j2:{
 "^":"qE;r9:type=",
 "%":"HTMLScriptElement"},
@@ -6173,8 +6205,19 @@ fq:{
 FB:{
 "^":"qE;r9:type=,M:value=",
 "%":"HTMLTextAreaElement"},
+V7:{
+"^":"w6;Rn:data=",
+"%":"TextEvent"},
+w6:{
+"^":"ea;",
+"%":"DragEvent|FocusEvent|KeyboardEvent|MSPointerEvent|MouseEvent|MouseScrollEvent|MouseWheelEvent|PointerEvent|SVGZoomEvent|TouchEvent|WheelEvent;UIEvent"},
 K5:{
 "^":"D0;",
+uo:function(a,b,c,d){return W.P1(a.open(b,c))},
+Po:function(a,b,c){return this.uo(a,b,c,null)},
+kr:function(a,b,c,d){a.postMessage(P.jl(b),c)
+return},
+X6:function(a,b,c){return this.kr(a,b,c,null)},
 TP:[function(a){return a.stop()},"$0","gol",0,0,1],
 $isK5:1,
 $isGv:1,
@@ -6266,7 +6309,16 @@ this.b=z
 return!0}this.c=null
 this.b=y
 return!1},
-gk:function(){return this.c}}}],["","",,P,{
+gk:function(){return this.c}},
+u3:{
+"^":"a;Q",
+kr:function(a,b,c,d){this.Q.postMessage(P.jl(b),c)},
+X6:function(a,b,c){return this.kr(a,b,c,null)},
+On:function(a,b,c,d){return H.vh(P.f("You can only attach EventListeners to your own window."))},
+Y9:function(a,b,c,d){return H.vh(P.f("You can only attach EventListeners to your own window."))},
+$isGv:1,
+static:{P1:function(a){if(a===window)return a
+else return new W.u3(a)}}}}],["","",,P,{
 "^":"",
 hF:{
 "^":"Gv;",
@@ -6337,7 +6389,7 @@ MI:{
 "^":"d5;yG:result=",
 $isGv:1,
 "%":"SVGFEOffsetElement"},
-bM:{
+kK:{
 "^":"d5;yG:result=",
 $isGv:1,
 "%":"SVGFESpecularLightingElement"},
@@ -6468,7 +6520,7 @@ z=!!z.$isAz||!!z.$isea||!!z.$ishF||!!z.$isSg||!!z.$isKV||!!z.$isAS||!!z.$isK5}el
 if(z)return a
 else if(a instanceof Date)return P.Wu(a.getTime(),!1)
 else if(a.constructor===$.hs())return a.o
-else return P.ND(a)}},"$1","Xl",2,0,28,33],
+else return P.ND(a)}},"$1","Xl",2,0,30,33],
 ND:function(a){if(typeof a=="function")return P.iQ(a,$.Dp(),new P.Nz())
 else if(a instanceof Array)return P.iQ(a,$.Iq(),new P.Jd())
 else return P.iQ(a,$.Iq(),new P.QS())},
@@ -6755,6 +6807,118 @@ return}if(typeof window=="object")return
 if(typeof print=="function"){print(a)
 return}throw"Unable to print message: "+String(a)}}],["","",,P,{
 "^":"",
+jl:function(a){var z,y
+z=[]
+y=new P.Tm(new P.aI([],z),new P.rG(z),new P.yh(z)).$1(a)
+new P.Of().$0()
+return y},
+o0:function(a,b){var z=[]
+return new P.xL(b,new P.a9([],z),new P.YL(z),new P.m5(z)).$1(a)},
+aI:{
+"^":"r:20;Q,a",
+$1:function(a){var z,y,x
+z=this.Q
+y=z.length
+for(x=0;x<y;++x)if(z[x]===a)return x
+z.push(a)
+this.a.push(null)
+return y}},
+rG:{
+"^":"r:21;Q",
+$1:function(a){var z=this.Q
+if(a>=z.length)return H.e(z,a)
+return z[a]}},
+yh:{
+"^":"r:22;Q",
+$2:function(a,b){var z=this.Q
+if(a>=z.length)return H.e(z,a)
+z[a]=b}},
+Of:{
+"^":"r:0;",
+$0:function(){}},
+Tm:{
+"^":"r:2;Q,a,b",
+$1:function(a){var z,y,x,w,v,u
+z={}
+if(a==null)return a
+if(typeof a==="boolean")return a
+if(typeof a==="number")return a
+if(typeof a==="string")return a
+y=J.t(a)
+if(!!y.$isiP)return new Date(a.Q)
+if(!!y.$iswL)throw H.b(P.SY("structured clone of RegExp"))
+if(!!y.$ishH)return a
+if(!!y.$isAz)return a
+if(!!y.$isSg)return a
+if(!!y.$isWZ)return a
+if(!!y.$isET)return a
+if(!!y.$isw){x=this.Q.$1(a)
+w=this.a.$1(x)
+z.a=w
+if(w!=null)return w
+w={}
+z.a=w
+this.b.$2(x,w)
+y.aN(a,new P.ib(z,this))
+return z.a}if(!!y.$iszM){v=y.gv(a)
+x=this.Q.$1(a)
+w=this.a.$1(x)
+if(w!=null){if(!0===w){w=new Array(v)
+this.b.$2(x,w)}return w}w=new Array(v)
+this.b.$2(x,w)
+for(u=0;u<v;++u){z=this.$1(y.p(a,u))
+if(u>=w.length)return H.e(w,u)
+w[u]=z}return w}throw H.b(P.SY("structured clone of other type"))}},
+ib:{
+"^":"r:7;Q,a",
+$2:function(a,b){this.Q.a[a]=this.a.$1(b)}},
+a9:{
+"^":"r:20;Q,a",
+$1:function(a){var z,y,x,w
+z=this.Q
+y=z.length
+for(x=0;x<y;++x){w=z[x]
+if(w==null?a==null:w===a)return x}z.push(a)
+this.a.push(null)
+return y}},
+YL:{
+"^":"r:21;Q",
+$1:function(a){var z=this.Q
+if(a>=z.length)return H.e(z,a)
+return z[a]}},
+m5:{
+"^":"r:22;Q",
+$2:function(a,b){var z=this.Q
+if(a>=z.length)return H.e(z,a)
+z[a]=b}},
+xL:{
+"^":"r:2;Q,a,b,c",
+$1:function(a){var z,y,x,w,v,u,t,s
+if(a==null)return a
+if(typeof a==="boolean")return a
+if(typeof a==="number")return a
+if(typeof a==="string")return a
+if(a instanceof Date)return P.Wu(a.getTime(),!0)
+if(a instanceof RegExp)throw H.b(P.SY("structured clone of RegExp"))
+z=Object.getPrototypeOf(a)
+if(z===Object.prototype||z===null){y=this.a.$1(a)
+x=this.b.$1(y)
+if(x!=null)return x
+x=P.A(null,null)
+this.c.$2(y,x)
+for(w=Object.keys(a),w=H.J(new J.m1(w,w.length,0,null),[H.Z(w,0)]);w.D();){v=w.c
+x.q(0,v,this.$1(a[v]))}return x}if(a instanceof Array){y=this.a.$1(a)
+x=this.b.$1(y)
+if(x!=null)return x
+w=J.U(a)
+u=w.gv(a)
+x=this.Q?new Array(u):a
+this.c.$2(y,x)
+if(typeof u!=="number")return H.o(u)
+t=J.P(x)
+s=0
+for(;s<u;++s)t.q(x,s,this.$1(w.p(a,s)))
+return x}return a}},
 D7:{
 "^":"LU;Q,a",
 gd3:function(){var z=this.a
@@ -7060,7 +7224,7 @@ Ne:{
 "^":"r:2;",
 $1:function(a){return a!=null}},
 Si:{
-"^":"r:20;Q",
+"^":"r:23;Q",
 $1:function(a){var z,y,x,w,v
 z=this.Q
 y=z.p(0,a)
@@ -7104,7 +7268,7 @@ zq:function(a){return new E.Kt(P.z([this,a],!1,null))},
 GD:function(a,b,c){b=new E.Su(C.l0,"whitespace expected")
 return new E.up(b,b,this)},
 bS:function(a){return this.GD(a,null,null)},
-wO:[function(a){return new E.OA(a,this)},function(){return this.wO("end of input expected")},"vu","$1","$0","geX",0,2,21,35,36],
+wO:[function(a){return new E.OA(a,this)},function(){return this.wO("end of input expected")},"vu","$1","$0","geX",0,2,24,35,36],
 ez:function(a,b){return new E.il(b,this)},
 io:function(a){return new E.il(new E.XP(a),this)},
 ci:function(a,b,c){var z,y
@@ -7132,10 +7296,10 @@ ad:{
 "^":"r:2;Q",
 $1:[function(a){return this.Q.push(a)},null,null,2,0,null,15,"call"]},
 XP:{
-"^":"r:22;Q",
+"^":"r:25;Q",
 $1:[function(a){return J.Q(a,this.Q)},null,null,2,0,null,37,"call"]},
 wU:{
-"^":"r:22;Q,a,b",
+"^":"r:25;Q,a,b",
 $1:[function(a){var z,y,x,w,v
 z=[]
 y=J.U(a)
@@ -7265,6 +7429,7 @@ return J.Wx(a).B(a,b)}
 J.FN=function(a){return J.U(a).gl0(a)}
 J.GJ=function(a,b,c,d){return J.V(a).Y9(a,b,c,d)}
 J.Gw=function(a,b){return J.Wx(a).WZ(a,b)}
+J.Ih=function(a,b,c){return J.V(a).X6(a,b,c)}
 J.KC=function(a){return J.V(a).gyG(a)}
 J.Lp=function(a){return J.V(a).gJ(a)}
 J.M=function(a){return J.t(a).X(a)}
@@ -7299,6 +7464,7 @@ J.mG=function(a,b){if(a==null)return b==null
 if(typeof a!="object")return b!=null&&a===b
 return J.t(a).m(a,b)}
 J.me=function(a){return J.V(a).gol(a)}
+J.ns=function(a){return J.V(a).gRn(a)}
 J.oE=function(a,b){return J.Qc(a).iM(a,b)}
 J.pB=function(a,b){return J.U(a).OY(a,b)}
 J.qA=function(a){return J.P(a).br(a)}
@@ -7323,6 +7489,7 @@ C.xB=J.E.prototype
 C.z0=W.BH.prototype
 C.ZQ=J.iC.prototype
 C.vB=J.kd.prototype
+C.ol=W.K5.prototype
 C.KZ=new H.hJ()
 C.Eq=new P.ii()
 C.Wj=new P.yR()
@@ -7548,7 +7715,7 @@ I.$lazy($,"_dartProxyCtor","Je","hs",function(){return function DartObject(a){th
 I.$lazy($,"_patternParser","zP","R0",function(){return E.GP()})
 I.$lazy($,"_NEWLINE_PARSER","QP","Yw",function(){return E.Pw("\n",null).zq(E.Pw("\r",null).kJ(E.Pw("\n",null).Gi()))})
 
-init.metadata=["invocation","object","sender","e","x","closure","isolate","numberOfArguments","arg1","arg2","arg3","arg4","error","stackTrace","result","each","a","__","it","c","expression","n","value",,"_","ignored","element","data","arg","callback","captureThis","self","arguments","o","range","end of input expected","message","list",];init.types=[{func:"NT"},{func:"X0",void:true},{func:"aB",args:[null]},{func:"Za",args:[P.I,null]},{func:"bb",args:[null,P.Gz]},{func:"TS",args:[null,P.I]},{func:"zx",args:[P.I]},{func:"bh",args:[null,null]},{func:"BL",args:[P.I],opt:[P.zM]},{func:"cD",ret:P.w,args:[M.hw]},{func:"pG",args:[{func:"X0",void:true}]},{func:"Vx",void:true,args:[null],opt:[P.Gz]},{func:"BG",args:[null],opt:[null]},{func:"Uf",ret:P.a2},{func:"zk",args:[P.a2]},{func:"Ns",void:true,args:[P.a],opt:[P.Gz]},{func:"N5",void:true,args:[null,P.Gz]},{func:"A7",args:[P.I,P.a]},{func:"lv",args:[P.wv,null]},{func:"Cu",ret:P.I,args:[P.KN]},{func:"U8",ret:E.FX,args:[E.QF]},{func:"NP",ret:E.FX,opt:[P.I]},{func:"N1",args:[P.zM]},{func:"F4",ret:P.E4,args:[E.jT]},{func:"n9",void:true,args:[{func:"X0",void:true}]},{func:"Jg",void:true,args:[null]},{func:"BT",ret:P.a2,args:[null,null]},{func:"xr",ret:P.KN,args:[null]},{func:"uJ",ret:P.a,args:[null]},{func:"Dl",ret:P.KN,args:[P.fR,P.fR]},{func:"E0",ret:P.a2,args:[P.a,P.a]},{func:"ZY",ret:P.KN,args:[P.a]},];$=null
+init.metadata=["invocation","object","sender","e","x","closure","isolate","numberOfArguments","arg1","arg2","arg3","arg4","error","stackTrace","result","each","a","__","it","c","expression","n","value",,"_","ignored","element","data","arg","callback","captureThis","self","arguments","o","range","end of input expected","message","list",];init.types=[{func:"NT"},{func:"X0",void:true},{func:"aB",args:[null]},{func:"Za",args:[P.I,null]},{func:"bb",args:[null,P.Gz]},{func:"TS",args:[null,P.I]},{func:"zx",args:[P.I]},{func:"bh",args:[null,null]},{func:"BL",args:[P.I],opt:[P.zM]},{func:"cD",ret:P.w,args:[M.hw]},{func:"pG",args:[{func:"X0",void:true}]},{func:"Vx",void:true,args:[null],opt:[P.Gz]},{func:"BG",args:[null],opt:[null]},{func:"Uf",ret:P.a2},{func:"zk",args:[P.a2]},{func:"Ns",void:true,args:[P.a],opt:[P.Gz]},{func:"N5",void:true,args:[null,P.Gz]},{func:"A7",args:[P.I,P.a]},{func:"lv",args:[P.wv,null]},{func:"Cu",ret:P.I,args:[P.KN]},{func:"xr",ret:P.KN,args:[null]},{func:"vi",args:[P.KN]},{func:"iR",args:[P.KN,null]},{func:"U8",ret:E.FX,args:[E.QF]},{func:"NP",ret:E.FX,opt:[P.I]},{func:"N1",args:[P.zM]},{func:"F4",ret:P.E4,args:[E.jT]},{func:"n9",void:true,args:[{func:"X0",void:true}]},{func:"Jg",void:true,args:[null]},{func:"BT",ret:P.a2,args:[null,null]},{func:"uJ",ret:P.a,args:[null]},{func:"Dl",ret:P.KN,args:[P.fR,P.fR]},{func:"E0",ret:P.a2,args:[P.a,P.a]},{func:"ZY",ret:P.KN,args:[P.a]},];$=null
 I = I.$finishIsolateConstructor(I)
 $=new I()
 function convertToFastObject(a){function MyClass(){}MyClass.prototype=a
