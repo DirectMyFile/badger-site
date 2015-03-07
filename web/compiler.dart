@@ -89,7 +89,8 @@ void main() {
   inputEditor.focus();
 
   querySelector("#run").onClick.listen((e) {
-    JS.context.callMethod("eval", ["(function() {" + outputEditor.session.value + "})();"]);
+    var w = window.open("executor.html", "Badger Script Execution");
+    w.postMessage(outputEditor.session.value);
   });
 }
 

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Badger Executor</title>
+  </head>
+
+  <script>
+  window.addEventListener("message", function (event) {
+    eval(event.data);
+  });
+
+  function badgerInjectGlobal(ctx) {
+    ctx.window = window;
+  }
+  </script>
+</html>
