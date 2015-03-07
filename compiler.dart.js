@@ -468,7 +468,7 @@ gbx:function(a){return C.yT},
 $isFK:1},
 im:{
 "^":"F;",
-gbx:function(a){return C.yw},
+gbx:function(a){return C.OD},
 $isFK:1,
 $isKN:1},
 VA:{
@@ -2207,11 +2207,11 @@ z.d=null}},
 S:{
 "^":"kL;b,c,d,e,f,r,x,y,z,Q,a",
 gi9:function(a){var z=this.e
-if(z==null){z=H.J(new B.k6(this,"change",new B.iq(),null,null),[E.DU])
+if(z==null){z=H.J(new B.k6(this,"change",new B.qc(),null,null),[E.DU])
 this.e=z}return z.gvq(z)},
 gM:function(a){return this.Q.Z("getValue",null)},
 Y:function(a,b){return this.Q.Z("setValue",[a,b])}},
-iq:{
+qc:{
 "^":"r:2;",
 $1:[function(a){return B.op(J.Q(a,"data"))},null,null,2,0,null,3,"call"]}}],["","",,S,{
 "^":"",
@@ -2408,7 +2408,11 @@ z.Q+=")) {"
 this.NK(a.a.gQh())
 z.Q+="}"},
 x0:function(a){this.Q.Q+=H.d(a.Q)},
-NI:function(a){}},
+NI:function(a){},
+Gb:function(a){var z=this.Q
+z.Q+="("
+this.xn(a.Q)
+z.Q+=")"}},
 OT:{
 "^":"pS;Q",
 wk:function(a){var z,y,x,w,v,u
@@ -2635,7 +2639,11 @@ v=x[v]!==";"
 x=v}else{w=x
 x=!1}if(x)z.Q=w+";"}z.Q+="}.bind(this)"},
 x0:function(a){this.Q.Q+=H.d(a.Q)},
-NI:function(a){this.Q.Q+="\u03bb.hasOwnProperty(\""+H.d(a.Q)+"\")"}},
+NI:function(a){this.Q.Q+="\u03bb.hasOwnProperty(\""+H.d(a.Q)+"\")"},
+Gb:function(a){var z=this.Q
+z.Q+="("
+this.xn(a.Q)
+z.Q+=")"}},
 HQ:{
 "^":"r:2;",
 $1:[function(a){return a instanceof M.hw},null,null,2,0,null,19,"call"]},
@@ -2691,20 +2699,23 @@ z=1
 break
 case 1:return H.AZ(x,0,y,null)
 case 2:return H.AZ(v,1,y)}}return H.AZ(null,body,y,null)},
-pO:function(a,b){if(b==null)this.e.push(a)
-else this.I7("var "+a+" = "+b)},
-I7:function(a){return this.pO(a,null)},
-yw:function(){var z,y,x
-z=this.a.Q
+pO:function(a,b){this.e.push([a,b])},
+yw:function(){var z,y,x,w,v
+z=this.a
+y=z.Q
+x=y.charCodeAt(0)==0?y:y
+z=z.Q
 y=this.b
 y=H.J(new H.oi(y,new S.bW(z.charCodeAt(0)==0?z:z)),[H.Z(y,0)])
 this.f=P.tM(y,H.W8(y,"mW",0))
-z=this.e
-z=z.length!==0?C.Nm.zV(z,";")+";":""
-x=["\u03bb"]
-C.Nm.Ay(x,this.f.br(0))
-z+="(function("+C.Nm.zV(x,",")+"){"
-if(this.Q.p(0,"allow-injection")!==!1)z+="typeof badgerInjectGlobal !== \"undefined\" ? badgerInjectGlobal(\u03bb) : null;"
+y=this.e
+y=H.J(new H.oi(y,new S.hZ(x)),[H.Z(y,0)])
+w=P.z(y,!0,H.W8(y,"mW",0))
+z=w.length!==0?H.J(new H.A8(w,new S.iq()),[null,null]).zV(0,";")+";":""
+v=["\u03bb"]
+C.Nm.Ay(v,this.f.br(0))
+z+="(function("+C.Nm.zV(v,",")+"){"
+if(this.Q.p(0,"hooks")===!0)z+="typeof badgerInjectGlobal !== \"undefined\" ? badgerInjectGlobal(\u03bb) : null;"
 return z.charCodeAt(0)==0?z:z},
 U4:function(a){a=C.xB.bS(a)
 H.Yx("")
@@ -2728,6 +2739,13 @@ $asjt:function(){return[P.I]}},
 bW:{
 "^":"r:2;Q",
 $1:function(a){return C.xB.tg(this.Q,a)}},
+hZ:{
+"^":"r:2;Q",
+$1:function(a){return C.xB.tg(this.Q,J.Q(a,0))}},
+iq:{
+"^":"r:2;",
+$1:[function(a){var z=J.U(a)
+return J.mG(z.gv(a),1)?z.p(a,0):z.p(a,1)},null,null,2,0,null,18,"call"]},
 VW:{
 "^":"r:2;Q",
 $1:function(a){return C.xB.tg(this.Q,J.Q(a,0))}},
@@ -2801,6 +2819,8 @@ yx:{
 X:function(a){return"DoubleLiteral("+H.d(this.Q)+")"}},
 O0:{
 "^":"hw;xG:Q<"},
+yw:{
+"^":"hw;Q"},
 lA:{
 "^":"hw;M:Q>"},
 un:{
@@ -3168,6 +3188,7 @@ else if(!!z.$islA)return P.B(["type","hexadecimal literal","value",a.Q],null,nul
 else if(!!z.$isEp){z=a.Q
 z=typeof z==="string"?z:this.mn(z)
 return P.B(["type","method call","reference",z,"args",J.qA(J.kl(a.a,this.gjr()))],null,null)}else if(!!z.$isO0)return P.B(["type","defined","identifier",a.Q],null,null)
+else if(!!z.$isyw)return P.B(["type","parentheses","expression",this.mn(a.Q)],null,null)
 else if(!!z.$isYa)return P.B(["type","operator","left",this.mn(a.Q),"right",this.mn(a.a),"op",a.b],null,null)
 else if(!!z.$isnv)return P.B(["type","negate","value",this.mn(a.Q)],null,null)
 else if(!!z.$isqz)return P.B(["type","list definition","elements",J.qA(J.kl(a.Q,this.gjr()))],null,null)
@@ -3358,7 +3379,7 @@ Fn:{
 $1:[function(a){return new M.YE(J.mG(a,"true"))},null,null,2,0,null,18,"call"]},
 ym:{
 "^":"r:2;",
-$1:[function(a){return J.Q(a,1)},null,null,2,0,null,18,"call"]},
+$1:[function(a){return new M.yw(J.Q(a,1))},null,null,2,0,null,18,"call"]},
 Mi:{
 "^":"r:2;",
 $1:[function(a){return new M.qz(J.Q(a,2))},null,null,2,0,null,18,"call"]},
@@ -3453,6 +3474,7 @@ else if(!!z.$isEp)this.AS(a)
 else if(!!z.$isx0)this.RD(a)
 else if(!!z.$isdP)this.x0(a)
 else if(!!z.$isO0)this.NI(a)
+else if(!!z.$isyw)this.Gb(a)
 else throw H.b(P.FM("Unknown Expression Type: "+H.d(a)))}}}],["","",,X,{
 "^":"",
 QL:[function(){var z,y,x,w
@@ -7649,7 +7671,7 @@ C.TJ=H.K('Wy')
 C.yT=H.K('FK')
 C.la=H.K('ZX')
 C.O4=H.K('CP')
-C.yw=H.K('KN')
+C.OD=H.K('KN')
 C.iN=H.K('yc')
 C.jV=H.K('rF')
 C.KA=H.K('X6')
@@ -7707,7 +7729,7 @@ I.$lazy($,"nullLiteralPropertyPattern","tt","Bi",function(){return H.cM(function
 I.$lazy($,"undefinedPropertyPattern","dt","eA",function(){return H.cM(H.Mj(void 0))})
 I.$lazy($,"undefinedLiteralPropertyPattern","A7","ko",function(){return H.cM(function(){try{(void 0).$method$}catch(z){return z.message}}())})
 I.$lazy($,"_Object","xV","MQ",function(){return J.Q(B.wO(),"Object")})
-I.$lazy($,"MAPPING","YI","EJ",function(){return P.B(["type","a","immutable","b","reference","c","identifier","d","value","e","declarations","f","statements","g","isInitialDefine","h","op","i","components","j","args","k","method call","l","access","m","block","n","operator","o","assignment","p","string literal","q","left","r","right","s","variable reference","t","for in","u","if","v","while","w","function definition","x","anonymous function","y","import declaration","z","integer literal","+","double literal","-","hexadecimal literal","@","ternary operator",">","boolean literal",">","range literal",".","identifiers","?","list definition","|","map definition","[","map entry","]","return","*","ternary",";","break","=","defined","#","condition","{","whenTrue","%","whenFalse","&","elements","^"],null,null)})
+I.$lazy($,"MAPPING","YI","EJ",function(){return P.B(["type","a","immutable","b","reference","c","identifier","d","value","e","declarations","f","statements","g","isInitialDefine","h","op","i","components","j","args","k","method call","l","access","m","block","n","operator","o","assignment","p","string literal","q","left","r","right","s","variable reference","t","for in","u","if","v","while","w","function definition","x","anonymous function","y","import declaration","z","integer literal","+","double literal","-","hexadecimal literal","@","ternary operator",">","boolean literal",">","range literal",".","identifiers","?","list definition","|","map definition","[","map entry","]","return","*","ternary",";","break","=","defined","#","condition","{","whenTrue","%","whenFalse","&","elements","^","parentheses","%"],null,null)})
 I.$lazy($,"scheduleImmediateClosure","lI","ej",function(){return P.xg()})
 I.$lazy($,"_toStringVisiting","nM","Ex",function(){return[]})
 I.$lazy($,"context","N","rj",function(){return P.ND(self)})
