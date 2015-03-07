@@ -2185,8 +2185,8 @@ BI:function(a){return this.b.$1(a)}},
 D8:{
 "^":"r:0;Q",
 $0:function(){var z=this.Q
-z.d=z.Q.$2("addEventListener",[z.a,new B.Rp(z)])}},
-Rp:{
+z.d=z.Q.$2("addEventListener",[z.a,new B.Du(z)])}},
+Du:{
 "^":"r:7;Q",
 $2:[function(a,b){var z,y
 z=this.Q
@@ -2395,7 +2395,7 @@ OT:{
 wk:function(a){var z,y,x,w,v,u
 z=this.Q
 y=a.Q
-z.Q+="\u03bbfor(function("+H.d(y)+"){var \u03bb = {\""+H.d(y)+"\":"+H.d(y)+"};"
+z.Q+="\u03bbfor(function("+H.d(y)+", \u03bb){\u03bblet(\u03bb, \""+H.d(y)+"\", "+H.d(y)+");"
 for(y=a.b,x=J.Nx(y.gQh());x.D();){this.OH(x.c)
 w=z.Q
 if(w.length!==0){w=w.charCodeAt(0)==0?w:w
@@ -2407,7 +2407,7 @@ w=u}else{v=w
 w=!1}if(w)z.Q=v+";"
 if(J.pB(y.gQh(),a)!==J.wS(y.gQh())-1)z.Q+=";"}z.Q+="},"
 this.xn(a.a)
-z.Q+=")"},
+z.Q+=", \u03bb)"},
 FY:function(a){},
 zs:function(a){},
 kF:function(a){var z,y,x,w,v,u
@@ -2416,10 +2416,9 @@ if(!(z instanceof M.YE&&!H.Go(z,"$isYE").Q)){y=a.a
 y=y==null||J.FN(y.gQh())}else y=!0
 if(y)return
 y=this.Q
-x=y.Q+="if ("
-y.Q=x+"\u03bbbool("
+y.Q+="\u03bbif(\u03bb,"
 this.xn(z)
-y.Q+=")) {"
+y.Q+=",function(\u03bb){"
 for(z=a.a,x=J.Nx(z.gQh());x.D();){this.OH(x.c)
 w=y.Q
 if(w.length!==0){w=w.charCodeAt(0)==0?w:w
@@ -2431,7 +2430,7 @@ w=u}else{v=w
 w=!1}if(w)y.Q=v+";"
 if(J.pB(z.gQh(),a)!==J.wS(z.gQh())-1)y.Q+=";"}z=y.Q+="}"
 x=a.b
-if(x!=null){y.Q=z+" else {"
+if(x!=null){y.Q=z+",function(\u03bb){"
 for(z=J.Nx(x.gQh());z.D();){this.OH(z.c)
 w=y.Q
 if(w.length!==0){w=w.charCodeAt(0)==0?w:w
@@ -2441,17 +2440,16 @@ if(u<0||u>=w.length)return H.e(w,u)
 u=w[u]!==";"
 w=u}else{v=w
 w=!1}if(w)y.Q=v+";"
-if(J.pB(x.gQh(),a)!==J.wS(x.gQh())-1)y.Q+=";"}y.Q+="}"}},
+if(J.pB(x.gQh(),a)!==J.wS(x.gQh())-1)y.Q+=";"}z=y.Q+="}"}y.Q=z+")"},
 Jf:function(a){var z,y,x,w,v,u
 z=a.Q
 if(!(z instanceof M.YE&&!H.Go(z,"$isYE").Q)){y=a.a
 y=y==null||J.FN(y.gQh())}else y=!0
 if(y)return
 y=this.Q
-x=y.Q+="while ("
-y.Q=x+"\u03bbbool("
+y.Q+="\u03bbwhile(\u03bb,"
 this.xn(z)
-y.Q+=")) {"
+y.Q+=",function(\u03bb){"
 for(z=a.a,x=J.Nx(z.gQh());x.D();){this.OH(x.c)
 w=y.Q
 if(w.length!==0){w=w.charCodeAt(0)==0?w:w
@@ -2461,19 +2459,22 @@ if(u<0||u>=w.length)return H.e(w,u)
 u=w[u]!==";"
 w=u}else{v=w
 w=!1}if(w)y.Q=v+";"
-if(J.pB(z.gQh(),a)!==J.wS(z.gQh())-1)y.Q+=";"}y.Q+="}"},
+if(J.pB(z.gQh(),a)!==J.wS(z.gQh())-1)y.Q+=";"}y.Q+="})"},
 Oh:function(a){this.Q.Q+="return "
 this.xn(a.Q)},
-RY:function(a){this.Q.Q+="break"},
+RY:function(a){this.Q.Q+="return false"},
 Hh:function(a){var z,y,x
-z=a.a
+if(a.Q){z=this.Q
+z.Q+="\u03bblet(\u03bb,\""+H.d(a.a)+"\","
+this.xn(a.b)
+z.Q+=")"}else{z=a.a
 y=this.Q
-if(a.Q){y.Q+="\u03bblet(\u03bb,\""+H.d(z)+"\","
+if(a.c){y.Q+="\u03bbvar(\u03bb,\""+H.d(z)+"\","
 this.xn(a.b)
 y.Q+=")"}else{z=y.Q+="\u03bb."+H.d(z)+" ="
 x=a.b
 if(x!=null)this.xn(x)
-else y.Q=z+"null"}},
+else y.Q=z+"null"}}},
 ot:function(a){var z,y,x,w
 this.OH(a)
 z=this.Q
@@ -2486,24 +2487,26 @@ w=y[w]!==";"
 y=w}else{x=y
 y=!1}if(y)z.Q=x+";"},
 AS:function(a){var z,y,x,w,v
-z=a.Q
-y=this.Q
-if(typeof z==="string")y.Q+=H.d(z)+"("
-else{this.xn(z)
-y.Q+="("}for(z=a.a,x=J.P(z),w=x.gu(z);w.D();){v=w.gk()
+z=this.Q
+z.Q+="\u03bb."
+y=a.Q
+if(typeof y==="string")z.Q+=H.d(y)+"("
+else{this.xn(y)
+z.Q+="("}for(y=a.a,x=J.P(y),w=x.gu(y);w.D();){v=w.gk()
 this.xn(v)
-if(x.OY(z,v)!==J.aF(x.gv(z),1))y.Q+=","}y.Q+=")"},
-VG:function(a){var z,y,x,w,v,u
+if(x.OY(y,v)!==J.aF(x.gv(y),1))z.Q+=","}z.Q+=")"},
+VG:function(a){var z,y,x,w,v,u,t
 z=a.Q
 y=J.U(z)
 if(y.gl0(z)===!0){this.Q.Q+="\"\""
-return}x=this.Q
-x.Q+="\""
-for(w=y.gu(z),v=0;w.D();){u=w.gk()
-if(typeof u==="string"){x.Q+=u
-if(v===J.aF(y.gv(z),1))x.Q+="\""}else{if(v!==0)x.Q+="\"+"
+return}for(x=y.gu(z),w=this.Q,v=0;x.D();){u=x.gk()
+if(typeof u==="string"){if(v===0)w.Q+="\""
+w.Q+=u
+if(v===J.aF(y.gv(z),1))w.Q+="\""}else{t=v===0
+if(!t)w.Q+="\"+"
 this.xn(u)
-if(v!==J.aF(y.gv(z),1))x.Q+="\""}++v}},
+if(t)w.Q+="+"
+if(v!==J.aF(y.gv(z),1))w.Q+="\""}++v}},
 Sc:function(a){this.Q.Q+=H.d(J.M(a.Q))},
 Ix:function(a){this.Q.Q+=H.d(a.Q)},
 ps:function(a){var z=this.Q
@@ -2512,8 +2515,9 @@ this.xn(a.Q)
 z.Q+=", "
 this.xn(a.a)
 z.Q+=")"},
-AQ:function(a,b){if(!b)this.Q.Q+="\u03bb."
-this.Q.Q+=H.d(a.gxG())},
+AQ:function(a,b){var z=this.Q
+z.Q+="\u03bb."
+z.Q+=H.d(a.gxG())},
 Wi:function(a){return this.AQ(a,!1)},
 O1:function(a){var z,y,x,w,v
 z=this.Q
@@ -2552,9 +2556,11 @@ if(z.m(a,"=="))return"==="
 else if(z.m(a,"!="))return"!=="
 else if(z.m(a,"~/"))return"/"
 else return a},
-d4:function(a){var z=a.Q
-if(z instanceof M.un)this.AQ(z,!0)
-else this.xn(z)
+d4:function(a){var z,y
+z=a.Q
+if(z instanceof M.un){y=this.Q
+y.Q+="\u03bb."
+y.Q+=H.d(z.gxG())}else this.xn(z)
 z=this.Q
 z.Q+="."
 z.Q+=J.XS(a.a,".")},
@@ -2577,9 +2583,9 @@ y.Q+=" : "
 this.xn(a.b)},
 r7:function(a){var z,y,x,w,v
 z=this.Q
-z.Q+="function "+H.d(a.Q)+"("
+z.Q+="\u03bb."+H.d(a.Q)+" = function("
 z.Q+=J.XS(a.a,",")
-z.Q+="){var \u03bb = {"+H.J(new H.A8(H.ug(a.a),new S.p4()),[null,null]).zV(0,",")+"};"
+z.Q+="){\u03bbload(\u03bb, {"+H.J(new H.A8(H.ug(a.a),new S.p4()),[null,null]).zV(0,",")+"});"
 for(y=J.Nx(a.b.gQh());y.D();){this.OH(y.c)
 x=z.Q
 if(x.length!==0){x=x.charCodeAt(0)==0?x:x
@@ -2610,7 +2616,7 @@ p4:{
 "^":"r:2;",
 $1:[function(a){return"\""+H.d(a)+"\": "+H.d(a)},null,null,2,0,null,18,"call"]},
 Qd:{
-"^":"jt;a,b,c,d,e,f,Q",
+"^":"jt;a,b,c,d,e,f,r,Q",
 XF:function(a){var z,y
 z=this.Q
 z.p(0,"isTestSuite")
@@ -2620,50 +2626,71 @@ z=this.b
 z.push("\u03bblet")
 y=this.c
 y.push(this.U4("      function(context, name, value) {\n        Object.defineProperty(context, name, {\n          enumerable: true,\n          get: function() {\n            return value;\n          },\n          set: function() {\n            throw new Error('Unable to set ' + name + ', it is immutable.');\n          }\n        });\n      }\n    "))
+z.push("\u03bbvar")
+y.push(this.U4("      function(context, name, value) {\n        var m = value;\n        Object.defineProperty(context, name, {\n          enumerable: true,\n          get: function() {\n            return m;\n          },\n          set: function(v) {\n            m = v;\n          }\n        });\n      }\n    "))
 z.push("\u03bbfor")
-y.push(this.U4("      function(block, value) {\n        for (var i in value) {\n          if (value.hasOwnProperty(i)) {\n            block(value[i]);\n          }\n        }\n      }\n    "))
+y.push(this.U4("      function(b, v, \u03bb) {\n        for (var i = 0; i < v.length; i++) {\n          var r = b(v[i], Object.create(\u03bb));\n          if (r === false) {\n            return false;\n          }\n        }\n      }\n    "))
+z.push("\u03bbwhile")
+y.push(this.U4("      function(\u03bb, c, t) {\n        while (\u03bbbool(c)) {\n          var r = t(Object.create(\u03bb));\n          if (r === false) {\n            break;\n          }\n        }\n      }\n    "))
+z.push("\u03bbif")
+y.push(this.U4("      function(\u03bb, c, t, f) {\n        if (\u03bbbool(c)) {\n          return t(Object.create(\u03bb));\n        } else if (typeof f !== \"undefined\") {\n          return f(Object.create(\u03bb));\n        }\n      }\n    "))
 z.push("\u03bbrange")
-y.push(this.U4("      function(lower, upper) {\n        var list = [];\n        for (var i = lower; i <= upper; i++) {\n          list.push(i);\n        }\n        return list;\n      }\n    "))
-z.push("\u03bbbool")
-y.push(this.U4("      function(value) {\n        if (value === null || typeof value === \"undefined\") {\n          return false;\n        } else if (typeof value === \"number\") {\n          return value !== 0.0 && value !== 0;\n        } else if (typeof value === \"string\") {\n          return value.length !== 0;\n        } else if (typeof value === \"boolean\") {\n          return value === true;\n        } else {\n          return true;\n        }\n      }\n    "))
-z.push("print")
-y.push(this.U4("function(obj) {console.log(obj.toString());}"))
-z.push("async")
-y.push(this.U4("function(cb) {setTimeout(cb, 0);}"))
-z.push("args")
-y.push(this.U4("typeof process === \"undefined\" ? [] : process.argv.slice(2)"))
+y.push(this.U4("      function(l, u) {\n        var m = [];\n        for (var i = l; i <= u; i++) {\n          m.push(i);\n        }\n        return m;\n      }\n    "))
+this.pO("\u03bbbool","      function(value) {\n        if (value === null || typeof value === \"undefined\") {\n          return false;\n        } else if (typeof value === \"number\") {\n          return value !== 0.0 && value !== 0;\n        } else if (typeof value === \"string\") {\n          return value.length !== 0;\n        } else if (typeof value === \"boolean\") {\n          return value === true;\n        } else {\n          return true;\n        }\n      }\n    ")
+z.push("\u03bbload")
+y.push(this.U4("      function(\u03bb, m) {\n        Object.keys(m).forEach(function(k) {\n          \u03bb[k] = m[k];\n        });\n      }\n    "))
+this.d.push(["print","function(obj) {console.log(obj.toString());}"])
+z=this.d
+z.push(["async","function(cb) {setTimeout(cb, 0);}"])
+z.push(["args","typeof process === \"undefined\" ? [] : process.argv.slice(2)"])
 z=this.a
 new S.OT(z).DV(a)
 y=this.yw()
 z=z.Q
 return this.U4(y+(z.charCodeAt(0)==0?z:z)+this.Gk())},
+pO:function(a,b){if(b==null)this.e.push(a)
+else this.I7("var "+a+" = "+b)},
+I7:function(a){return this.pO(a,null)},
 yw:function(){var z,y
 z=this.a.Q
 y=this.b
 y=H.J(new H.oi(y,new S.bW(z.charCodeAt(0)==0?z:z)),[H.Z(y,0)])
-this.e=P.tM(y,H.W8(y,"mW",0))
-z=this.d
+this.f=P.tM(y,H.W8(y,"mW",0))
+z=this.e
 z=z.length!==0?C.Nm.zV(z,";")+";":""
-y="(function("+this.e.zV(0,",")+"){var \u03bb = {"
-z+=y+(this.e.tg(0,"args")?"\"args\": args":"")+"};"
+z+="(function(\u03bb, "+this.f.zV(0,",")+"){"
 return z.charCodeAt(0)==0?z:z},
 U4:function(a){a=C.xB.bS(a)
 H.Yx("")
-a=H.ys(a,this.f,"")
+a=H.ys(a,this.r,"")
 H.Yx("")
 a=H.ys(a,"\n","")
 H.Yx(";")
 return H.ys(a,";;",";")},
-Gk:function(){var z,y,x,w,v
-z=P.A(null,null)
-for(y=this.b,y=H.J(new J.m1(y,y.length,0,null),[H.Z(y,0)]),x=this.c,w=0;y.D();){v=y.c
-if(this.e.tg(0,v)){if(w>=x.length)return H.e(x,w)
-z.q(0,v,x[w])}++w}return"})("+H.J(new H.oi(x,new S.VW(z)),[H.Z(x,0)]).zV(0,",")+");"},
+Gk:function(){var z,y,x,w,v,u
+z=this.a.Q
+y=P.A(null,null)
+x=this.d
+x=H.J(new H.oi(x,new S.VW(z.charCodeAt(0)==0?z:z)),[H.Z(x,0)])
+w="{"+H.J(new H.A8(P.z(x,!0,H.W8(x,"mW",0)),new S.Rp()),[null,null]).zV(0,",")+"}"
+for(z=this.b,z=H.J(new J.m1(z,z.length,0,null),[H.Z(z,0)]),x=this.c,v=0;z.D();){u=z.c
+if(this.f.tg(0,u)){if(v>=x.length)return H.e(x,v)
+y.q(0,u,x[v])}++v}return"})("+w+","+H.J(new H.oi(x,new S.Yt(y)),[H.Z(x,0)]).zV(0,",")+");"},
 $asjt:function(){return[P.I]}},
 bW:{
 "^":"r:2;Q",
 $1:function(a){return C.xB.tg(this.Q,a)}},
 VW:{
+"^":"r:2;Q",
+$1:function(a){return C.xB.tg(this.Q,J.Q(a,0))}},
+Rp:{
+"^":"r:2;",
+$1:[function(a){var z,y,x
+z=J.U(a)
+y=z.p(a,0)
+x=z.p(a,1)
+return"\""+H.d(y)+"\":"+H.d(x)},null,null,2,0,null,18,"call"]},
+Yt:{
 "^":"r:2;Q",
 $1:function(a){var z=this.Q
 return z.gUQ(z).tg(0,a)}},
@@ -3426,7 +3453,7 @@ t=[]
 C.Nm.Ay(t,H.J(new H.A8(H.J(new H.A8([],B.Np()),[null,null]),P.En()),[null,null]))
 u.Z("setAnnotations",[H.J(new P.Tz(t),[null])])
 u=$.t5
-if(u==="js"){p=new S.Qd(new P.Rn(""),H.J([],[P.I]),H.J([],[P.I]),[],P.Ls(null,null,null,P.I),new H.VR("\\s{2,}(?=([^\"]*(\"|')[^\"']*(\"|'))*[^\"']*$)",H.v4("\\s{2,}(?=([^\"]*(\"|')[^\"']*(\"|'))*[^\"']*$)",!1,!0,!1),null,null),P.A(null,null))
+if(u==="js"){p=new S.Qd(new P.Rn(""),H.J([],[P.I]),H.J([],[P.I]),[],[],P.Ls(null,null,null,P.I),new H.VR("\\s{2,}(?=([^\"]*(\"|')[^\"']*(\"|'))*[^\"']*$)",H.v4("\\s{2,}(?=([^\"]*(\"|')[^\"']*(\"|'))*[^\"']*$)",!1,!0,!1),null,null),P.A(null,null))
 $.R.Q.Z("getSession",null).Z("setOption",["mode","ace/mode/javascript"])}else if(u==="dart"){p=new S.RY(P.A(null,null))
 $.R.Q.Z("getSession",null).Z("setOption",["mode","ace/mode/dart"])}else if(u==="ast"){p=new S.Ub(P.A(null,null))
 $.R.Q.Z("getSession",null).Z("setOption",["mode","ace/mode/json"])}else if(u==="tiny-ast"){p=new S.XE(P.A(null,null))
