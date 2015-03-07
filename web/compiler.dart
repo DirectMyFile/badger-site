@@ -18,7 +18,7 @@ func fib(n) {
   return ((n == 0) || (n == 1)) ? n : fib(n - 1) + fib(n - 2)
 }
 
-window.alert(fib(10))
+print(fib(10))
 """;
 
 const String GREETING = r"""
@@ -29,12 +29,12 @@ func greet(name) {
 let names = ["Kenneth", "Logan", "Sam", "Mike"]
 
 for name in names {
-  window.alert(name)
+  print(name)
 }
 """;
 
 const String HELLO = r"""
-window.alert("Hello World")
+print("Hello World")
 """;
 
 String formatJSON(String input) {
@@ -90,7 +90,16 @@ void main() {
 
   querySelector("#run").onClick.listen((e) {
     var w = window.open("executor.html", "Badger Script Execution");
-    w.postMessage(outputEditor.session.value);
+    window.addEventListener("message", (e) {
+      var data = e.data;
+
+      if (data["command"] == "ready") {
+        var code = outputEditor.session.value.toString();
+        w.postMessage({
+          "code": code
+        }, window.location.href);
+      }
+    });
   });
 }
 
@@ -122,6 +131,7 @@ recompile() async {
 
   if (type == "js") {
     compiler = new JsCompilerTarget();
+    compiler.options["hooks"] = true;
     outputEditor.session.setOption("mode", "ace/mode/javascript");
   } else if (type == "dart") {
     compiler = new DartCompilerTarget();
