@@ -35,5 +35,10 @@
     <script src="packages/browser/dart.js"></script>
     <script src="js/ace.js"></script>
     <script src="js/beautify.js"></script>
+    <script>
+    function badgerInjectGlobal(ctx) {
+      ctx.window = window;
+    }
+    </script>
   </body>
 </html>
