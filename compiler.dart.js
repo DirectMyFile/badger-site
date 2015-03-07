@@ -2487,17 +2487,14 @@ Oh:function(a){this.Q.Q+="return "
 this.xn(a.Q)},
 RY:function(a){this.Q.Q+="throw \u03bbbreaker;"},
 Hh:function(a){var z,y,x
-if(a.Q){z=this.Q
-z.Q+="\u03bblet(\u03bb,\""+H.d(a.a)+"\","
-this.xn(a.b)
-z.Q+=")"}else{z=a.a
+z=a.a
 y=this.Q
-if(a.c){y.Q+="\u03bbvar(\u03bb,\""+H.d(z)+"\","
+if(a.Q){y.Q+="\u03bblet(\u03bb,\""+H.d(z)+"\","
 this.xn(a.b)
 y.Q+=")"}else{z=y.Q+="\u03bb."+H.d(z)+" ="
 x=a.b
 if(x!=null)this.xn(x)
-else y.Q=z+"null"}}},
+else y.Q=z+"null"}},
 ot:function(a){var z,y,x,w
 this.OH(a)
 z=this.Q
@@ -2598,16 +2595,14 @@ z=this.Q
 z.Q+="["
 this.xn(a.a)
 z.Q+="]"},
-RD:function(a){var z,y
-z=a.Q
+RD:function(a){var z=a.Q
 if(z instanceof M.YE){if(H.Go(z,"$isYE").Q)this.xn(a.a)
 else this.xn(a.b)
-return}y=this.Q
-y.Q+="\u03bbbool("
-this.xn(z)
-y.Q+=") ? "
+return}this.xn(z)
+z=this.Q
+z.Q+=" ? "
 this.xn(a.a)
-y.Q+=" : "
+z.Q+=" : "
 this.xn(a.b)},
 r7:function(a){var z,y,x,w,v
 z=this.Q
@@ -2662,8 +2657,6 @@ q=u.b
 q.push("\u03bblet")
 p=u.c
 p.push(u.U4("      function(context, name, value) {\n        Object.defineProperty(context, name, {\n          enumerable: true,\n          get: function() {\n            return value;\n          },\n          set: function() {\n            throw new Error('Unable to set ' + name + ', it is immutable.');\n          }\n        });\n      }\n    "))
-q.push("\u03bbvar")
-p.push(u.U4("      function(context, name, value) {\n        var m = value;\n        Object.defineProperty(context, name, {\n          enumerable: true,\n          get: function() {\n            return m;\n          },\n          set: function(v) {\n            m = v;\n          }\n        });\n      }\n    "))
 q.push("\u03bbfor")
 p.push(u.U4("      function(b, v, \u03bb) {\n        for (var i = 0; i < v.length; i++) {\n          try {\n            b(v[i], Object.create(\u03bb));\n          } catch (e) {\n            if (e === BADGER_BREAK_NOW) {\n              break;\n            }\n          }\n        }\n      }\n    "))
 q.push("\u03bbwhile")
@@ -2672,7 +2665,7 @@ q.push("\u03bbif")
 p.push(u.U4("      function(\u03bb, c, t, f) {\n        if (\u03bbbool(c)) {\n          t(Object.create(\u03bb));\n        } else if (typeof f !== \"undefined\") {\n          f(Object.create(\u03bb));\n        }\n      }\n    "))
 q.push("\u03bbrange")
 p.push(u.U4("      function(l, u) {\n        var m = [];\n        for (var i = l; i <= u; i++) {\n          m.push(i);\n        }\n        return m;\n      }\n    "))
-u.pO("\u03bbbool","      function(value) {\n        if (value === null || typeof value === \"undefined\") {\n          return false;\n        } else if (typeof value === \"number\") {\n          return value !== 0.0 && value !== 0;\n        } else if (typeof value === \"string\") {\n          return value.length !== 0;\n        } else if (typeof value === \"boolean\") {\n          return value === true;\n        } else {\n          return true;\n        }\n      }\n    ")
+u.Ou("\u03bbbool","      function(value) {\n        if (value === null || typeof value === \"undefined\") {\n          return false;\n        } else if (typeof value === \"number\") {\n          return value !== 0.0 && value !== 0;\n        } else if (typeof value === \"string\") {\n          return value.length !== 0;\n        } else if (typeof value === \"boolean\") {\n          return value;\n        } else {\n          return true;\n        }\n      }\n    ",!0)
 u.pO("\u03bbbreaker","    \"BADGER_BREAK_NOW\"\n    ")
 q.push("\u03bbload")
 p.push(u.U4("      function(\u03bb, m) {\n        Object.keys(m).forEach(function(k) {\n          \u03bb[k] = m[k];\n        });\n      }\n    "))
@@ -2699,7 +2692,8 @@ z=1
 break
 case 1:return H.AZ(x,0,y,null)
 case 2:return H.AZ(v,1,y)}}return H.AZ(null,body,y,null)},
-pO:function(a,b){this.e.push([a,b])},
+Ou:function(a,b,c){this.e.push([a,b,c])},
+pO:function(a,b){return this.Ou(a,b,!1)},
 yw:function(){var z,y,x,w,v
 z=this.a
 y=z.Q
@@ -2741,11 +2735,14 @@ bW:{
 $1:function(a){return C.xB.tg(this.Q,a)}},
 hZ:{
 "^":"r:2;Q",
-$1:function(a){return C.xB.tg(this.Q,J.Q(a,0))}},
+$1:function(a){var z=J.U(a)
+if(!C.xB.tg(this.Q,z.p(a,0)))z=J.mG(z.gv(a),3)&&J.mG(z.p(a,2),!0)
+else z=!0
+return z}},
 iq:{
 "^":"r:2;",
 $1:[function(a){var z=J.U(a)
-return J.mG(z.gv(a),1)?z.p(a,0):z.p(a,1)},null,null,2,0,null,18,"call"]},
+return J.mG(z.gv(a),1)?z.p(a,0):C.xB.g("var "+H.d(z.p(a,0))+" = ",z.p(a,1))},null,null,2,0,null,18,"call"]},
 VW:{
 "^":"r:2;Q",
 $1:function(a){return C.xB.tg(this.Q,J.Q(a,0))}},
@@ -2964,7 +2961,7 @@ z=new E.Su(C.l0,"whitespace expected")
 y=new E.t4(0,-1,z)
 y.uk(z,0,-1)
 return x.kJ(y).kJ(this.RP(this.gEV()))},"$1","gAE",2,0,6,4],
-Ou:[function(){return this.RP(this.gLV()).qa(E.Pw("\n",null))},"$0","gYK",0,0,0],
+Ju:[function(){return this.RP(this.gLV()).qa(E.Pw("\n",null))},"$0","gYK",0,0,0],
 Aa:[function(){return this.RP(this.gkY()).zq(this.RP(this.gkv()))},"$0","gLV",0,0,0],
 xM:["q5",function(){return E.Cb("using feature ",null).kJ(this.RP(this.gGp()))},"$0","gkY",0,0,0],
 xA:["V6",function(){return E.Cb("import ",null).kJ(this.RP(this.gGp()))},"$0","gkv",0,0,0],
