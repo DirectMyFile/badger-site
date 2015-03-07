@@ -2660,7 +2660,10 @@ z=this.a
 new S.OT(z).DV(a)
 y=this.yw()
 z=z.Q
-return this.U4(y+(z.charCodeAt(0)==0?z:z)+this.Gk())},
+z=this.U4(y+(z.charCodeAt(0)==0?z:z)+this.Gk())
+y=H.v4("(\u03bb.)+(\u03bb)",!1,!0,!1)
+H.Yx("\u03bb")
+return H.ys(z,new H.VR("(\u03bb.)+(\u03bb)",y,null,null),"\u03bb")},
 pO:function(a,b){if(b==null)this.e.push(a)
 else this.I7("var "+a+" = "+b)},
 I7:function(a){return this.pO(a,null)},
@@ -2672,6 +2675,8 @@ this.f=P.tM(y,H.W8(y,"mW",0))
 z=this.e
 z=z.length!==0?C.Nm.zV(z,";")+";":""
 z+="(function(\u03bb, "+this.f.zV(0,",")+"){"
+this.Q.p(0,"allow-injection")
+z+="typeof badgerInjectGlobal !== \"undefined\" ? badgerInjectGlobal(\u03bb) : null;"
 return z.charCodeAt(0)==0?z:z},
 U4:function(a){a=C.xB.bS(a)
 H.Yx("")
