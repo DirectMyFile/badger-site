@@ -3932,7 +3932,7 @@ Y:{
 "^":"r:8;Q",
 $1:[function(a){var z
 a=J.SW(this.Q)
-z=P.B(["greeting","greet(name) {\n  return \"Hello $(name)\"\n}\n\nlet names = [\"Kenneth\", \"Logan\", \"Sam\", \"Mike\"]\n\nfor name in names {\n  print(name)\n}\n","hello","print(\"Hello World\")\n","math","print(2 + 2)\nprint(4 + 4)\nprint(10 / 2)\nprint(5 - 5)\nprint(5 * 5)\nprint(10 ~/ 2)\nprint(16 << 5)\nprint(16 >> 5)\n"],null,null).p(0,a)
+z=P.B(["greeting","greet(name) {\n  return \"Hello $(name)\"\n}\n\nlet names = [\"Kenneth\", \"Logan\", \"Sam\", \"Mike\"]\n\nfor name in names {\n  print(name)\n}\n","hello","print(\"Hello World\")\n","math","print(2 + 2)\nprint(4 + 4)\nprint(10 / 2)\nprint(5 - 5)\nprint(5 * 5)\nprint(10 ~/ 2)\nprint(16 << 5)\nprint(16 >> 5)\n","types","type Animal {\n  speak() {\n    print(\"(Silence)\")\n  }\n}\n\nlet animal = Animal()\nanimal.speak()\n","namespaces","namespace Badger {\n  hello() {\n    print(\"Hello World\")\n  }\n}\n\nBadger.hello()\n"],null,null).p(0,a)
 if(z==null){window.alert("Unknown Example: "+H.d(a))
 return}$.O.PC(z,-1)
 X.Ij()},null,null,2,0,8,5,"call"]},
