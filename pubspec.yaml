@@ -5,9 +5,6 @@ dependencies:
   badger:
     git: git://github.com/DirectMyFile/badger.git
   browser: ">=0.10.0+2 <0.11.0"
-  dart_to_js_script_rewriter: ">=0.1.0+1 <0.2.0"
 transformers:
 - $dart2js:
     commandLineOptions: ["--enable-experimental-mirrors"]
-transformers:
-- dart_to_js_script_rewriter
