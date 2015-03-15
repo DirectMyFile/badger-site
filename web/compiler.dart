@@ -61,6 +61,27 @@ Bug Description
 ```
 """;
 
+const String NAMESPACES = """
+namespace Badger {
+  hello() {
+    print("Hello World")
+  }
+}
+
+Badger.hello()
+""";
+
+const String TYPES = """
+type Animal {
+  speak() {
+    print("(Silence)")
+  }
+}
+
+let animal = Animal()
+animal.speak()
+""";
+
 String formatJSON(String input) {
   var value = JSON.decode(input);
   return new JsonEncoder.withIndent("  ").convert(value);
@@ -93,7 +114,9 @@ void main() {
     s = {
       "greeting": GREETING,
       "hello": HELLO,
-      "math": SIMPLE_MATH
+      "math": SIMPLE_MATH,
+      "types": TYPES,
+      "namespaces": NAMESPACES
     }[e];
 
     if (s == null) {
