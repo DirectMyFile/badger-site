@@ -1,3 +1,4 @@
+import "dart:async";
 import "dart:html";
 import "dart:convert";
 
@@ -13,16 +14,8 @@ ace.Editor outputEditor;
 String type = "js";
 String example;
 
-const String FIBONACCI = r"""
-func fib(n) {
-  return ((n == 0) || (n == 1)) ? n : fib(n - 1) + fib(n - 2)
-}
-
-print(fib(10))
-""";
-
 const String GREETING = r"""
-func greet(name) {
+greet(name) {
   return "Hello $(name)"
 }
 
@@ -36,6 +29,19 @@ for name in names {
 const String HELLO = r"""
 print("Hello World")
 """;
+
+const String SIMPLE_MATH = r"""
+print(2 + 2)
+print(4 + 4)
+print(10 / 2)
+print(5 - 5)
+print(5 * 5)
+print(10 ~/ 2)
+print(16 << 5)
+print(16 >> 5)
+""";
+
+String _lastContent;
 
 String formatJSON(String input) {
   var value = JSON.decode(input);
@@ -54,8 +60,10 @@ void main() {
   outputEditor.session.setOption("mode", "ace/mode/javascript");
   outputEditor.setOption("readOnly", true);
 
-  inputEditor.onChange.listen((e) {
-    recompile();
+  new Timer.periodic(new Duration(milliseconds: 1500), (t) {
+    if (_lastContent != inputEditor.session.value) {
+      recompile();
+    }
   });
 
   var $t = querySelector("#compiler");
@@ -70,13 +78,13 @@ void main() {
   $e.onChange.listen((e) {
     var e = $e.value;
     String s;
-    if (e == "hello") {
-      s = HELLO;
-    } else if (e == "greeting") {
-      s = GREETING;
-    } else if (e == "fib") {
-      s = FIBONACCI;
-    } else {
+    s = {
+      "greeting": GREETING,
+      "hello": HELLO,
+      "math": SIMPLE_MATH
+    }[e];
+
+    if (s == null) {
       window.alert("Unknown Example: ${e}");
       return;
     }
@@ -104,6 +112,7 @@ void main() {
 }
 
 recompile() async {
+  _lastContent = inputEditor.session.value;
   var parser = new BadgerParser();
   var result = parser.parse(inputEditor.session.value);
 

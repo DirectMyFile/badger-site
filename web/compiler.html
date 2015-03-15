@@ -10,17 +10,19 @@
 
   <body>
     <h2>Badger Compiler Demo</h2>
-    Compiler Target: <select id="compiler">
+    <label for="compiler">Compiler Target:</label>
+    <select id="compiler">
       <option value="js">JavaScript</option>
       <option value="dart">Dart</option>
       <option value="ast">AST</option>
       <option value="tiny-ast">Tiny AST</option>
     </select>
     &nbsp;&nbsp;
-    Example: <select id="example">
+    <label for="example">Example:</label>
+    <select id="example">
       <option value="greeting">Greeting</option>
       <option value="hello">Hello World</option>
-      <option value="fib">Fibonacci Sequence</button>
+      <option value="math">Simple Math</option>
     </select>
     &nbsp;&nbsp;
     <button id="run" hidden>Run Code</button>
