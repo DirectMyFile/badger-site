@@ -43,6 +43,24 @@ print(16 >> 5)
 
 String _lastContent;
 
+const String BUG_BODY = """
+## Description
+
+Bug Description
+
+## Compiler Input
+
+```badger
+{input}
+```
+
+## Compiler Output
+
+```{target}
+{output}
+```
+""";
+
 String formatJSON(String input) {
   var value = JSON.decode(input);
   return new JsonEncoder.withIndent("  ").convert(value);
@@ -60,20 +78,14 @@ void main() {
   outputEditor.session.setOption("mode", "ace/mode/javascript");
   outputEditor.setOption("readOnly", true);
 
-  new Timer.periodic(new Duration(milliseconds: 1500), (t) {
-    if (_lastContent != inputEditor.session.value) {
-      recompile();
-    }
-  });
-
-  var $t = querySelector("#compiler");
+  SelectElement $t = querySelector("#compiler");
 
   $t.onChange.listen((e) {
     type = $t.value;
     recompile();
   });
 
-  var $e = querySelector("#example");
+  SelectElement $e = querySelector("#example");
 
   $e.onChange.listen((e) {
     var e = $e.value;
@@ -92,6 +104,30 @@ void main() {
     inputEditor.setValue(s, -1);
     recompile();
   });
+
+  querySelector("#file_bug").onClick.listen((e) {
+    var body = BUG_BODY
+      .replaceAll("{input}", inputEditor.session.value)
+      .replaceAll("{output}", outputEditor.session.value)
+      .replaceAll("{target}", ["ast", "tiny-ast"].contains($t.value) ? "json" : $t.value);
+    var url = "https://github.com/badger-lang/badger/issues/new?title=Compiler+Bug&body=${Uri.encodeComponent(body)}";
+    window.open(url, "Badger: File Compiler Bug");
+  });
+
+  new Timer.periodic(new Duration(milliseconds: 1500), (t) {
+    if (_lastContent != inputEditor.session.value) {
+      recompile();
+    }
+  });
+
+  var uri = Uri.parse(window.location.href);
+  if (uri.queryParameters.containsKey("example")) {
+    $e.value = uri.queryParameters["example"];
+  }
+
+  if (uri.queryParameters.containsKey("target")) {
+    $t.value = uri.queryParameters["target"];
+  }
 
   recompile();
   inputEditor.focus();
@@ -118,8 +154,6 @@ recompile() async {
 
   if (result.isFailure) {
     print(result);
-    var annotations = [];
-
     var pstr = result.toPositionString();
 
     if (pstr.contains(":")) {
@@ -156,7 +190,13 @@ recompile() async {
     return;
   }
 
-  var out = await compiler.compile(result.value);
+  String out;
+  try {
+    out = await compiler.compile(result.value);
+  } catch (e) {
+    window.alert("Failed to Compile: ${e}");
+    return;
+  }
 
   if (type == "js") {
     out = JS.context.callMethod("js_beautify", [out, new JS.JsObject.jsify({
