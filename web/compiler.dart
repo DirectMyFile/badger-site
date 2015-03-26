@@ -72,7 +72,7 @@ Badger.hello()
 """;
 
 const String TYPES = """
-type Animal {
+class Animal {
   speak() {
     print("(Silence)")
   }
