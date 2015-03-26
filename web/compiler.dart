@@ -201,6 +201,7 @@ recompile() async {
     outputEditor.session.setOption("mode", "ace/mode/javascript");
   } else if (type == "dart") {
     compiler = new DartCompilerTarget();
+    compiler.options["pretty"] = true;
     outputEditor.session.setOption("mode", "ace/mode/dart");
   } else if (type == "ast") {
     compiler = new AstCompilerTarget();
